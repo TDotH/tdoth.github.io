@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,12 +7,16 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #141414;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* variables */
+  --color-red: rgb(255,0,0);
+
 }
 
 a {
@@ -20,14 +26,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -65,4 +63,102 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.glitter-container {
+  position: relative; /* Essential for positioning pseudo-elements */
+  background-color: #1a1a1a; /* Base background color */
+  overflow: hidden; /* Hide overflowing glitter particles */
+}
+
+.space {
+  background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.glitter-container::before,
+.glitter-container::after {
+  content: '';
+  position: absolute;
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+    radial-gradient(rgb(255, 255, 255) 1px, transparent 1px); /* Create a radial glow */
+  border-radius: 50%; /* Make them circular */
+  opacity: 0;
+  animation: glitter-movement 2s infinite alternate, /* Animate the glitter */
+    rainbow 2.5s linear infinite /* Give the glitter color */; 
+}
+
+.glitter-container::before {
+  width: 20px;
+  height: 20px;
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s; /* Stagger animation start times */
+}
+
+.glitter-container::after {
+  width: 15px;
+  height: 15px;
+  top: 70%;
+  left: 80%;
+  animation-delay: 1.5s;
+}
+
+@keyframes glitter-movement {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(50px, 30px) scale(1.2); /* Move and scale the glitter */
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, 60px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes rainbow {
+		100%,0%{
+			background-color: rgb(255,0,0);
+		}
+		8%{
+			background-color: rgb(255,127,0);
+		}
+		16%{
+			background-color: rgb(255,255,0);
+		}
+		25%{
+			background-color: rgb(127,255,0);
+		}
+		33%{
+			background-color: rgb(0,255,0);
+		}
+		41%{
+			background-color: rgb(0,255,127);
+		}
+		50%{
+			background-color: rgb(0,255,255);
+		}
+		58%{
+			background-color: rgb(0,127,255);
+		}
+		66%{
+			background-color: rgb(0,0,255);
+		}
+		75%{
+			background-color: rgb(127,0,255);
+		}
+		83%{
+			background-color: rgb(255,0,255);
+		}
+		91%{
+			background-color: rgb(255,0,127);
+		}
 }
