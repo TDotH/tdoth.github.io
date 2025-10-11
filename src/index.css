@@ -15,8 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* variables */
-  --color-red: rgb(255,0,0);
-
+  --color-red: rgb(255, 0, 0);
 }
 
 a {
@@ -65,12 +64,6 @@ button:focus-visible {
   }
 }
 
-.glitter-container {
-  position: relative; /* Essential for positioning pseudo-elements */
-  background-color: #1a1a1a; /* Base background color */
-  overflow: hidden; /* Hide overflowing glitter particles */
-}
-
 .space {
   background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
   bottom: 0;
@@ -80,33 +73,52 @@ button:focus-visible {
   top: 0;
 }
 
-.glitter-container::before,
-.glitter-container::after {
-  content: '';
+.particle::before,
+.particle::after {
+  content: "";
   position: absolute;
-  background: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+  background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 70%
+    ),
     radial-gradient(rgb(255, 255, 255) 1px, transparent 1px); /* Create a radial glow */
   border-radius: 50%; /* Make them circular */
   opacity: 0;
-  animation: glitter-movement 2s infinite alternate, /* Animate the glitter */
-    rainbow 2.5s linear infinite /* Give the glitter color */; 
+  animation: glitter-movement 2s infinite alternate,
+    /* Animate the glitter */ rainbow 2.5s linear infinite
+      /* Give the glitter color */;
 }
 
-.glitter-container::before {
-  width: 20px;
-  height: 20px;
-  top: 10%;
-  left: 20%;
-  animation-delay: 0s; /* Stagger animation start times */
+.particle-container {
+  z-index: 2;
+  position: absolute;
+  width: 100vh;
+  height: 100vh;
 }
 
-.glitter-container::after {
+.particle {
+  position: absolute; /* Essential for positioning pseudo-elements */
+  background-color: #1a1a1a; /* Base background color */
+  overflow: hidden; /* Hide overflowing glitter particles */
+}
+
+.particle::after {
+  width: 100vw;
+  height: 100vh;
   width: 15px;
   height: 15px;
   top: 70%;
   left: 80%;
   animation-delay: 1.5s;
+}
+
+.particle::before {
+  width: 20px;
+  height: 20px;
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s; /* Stagger animation start times */
 }
 
 @keyframes glitter-movement {
@@ -125,40 +137,41 @@ button:focus-visible {
 }
 
 @keyframes rainbow {
-		100%,0%{
-			background-color: rgb(255,0,0);
-		}
-		8%{
-			background-color: rgb(255,127,0);
-		}
-		16%{
-			background-color: rgb(255,255,0);
-		}
-		25%{
-			background-color: rgb(127,255,0);
-		}
-		33%{
-			background-color: rgb(0,255,0);
-		}
-		41%{
-			background-color: rgb(0,255,127);
-		}
-		50%{
-			background-color: rgb(0,255,255);
-		}
-		58%{
-			background-color: rgb(0,127,255);
-		}
-		66%{
-			background-color: rgb(0,0,255);
-		}
-		75%{
-			background-color: rgb(127,0,255);
-		}
-		83%{
-			background-color: rgb(255,0,255);
-		}
-		91%{
-			background-color: rgb(255,0,127);
-		}
+  100%,
+  0% {
+    background-color: rgb(255, 0, 0);
+  }
+  8% {
+    background-color: rgb(255, 127, 0);
+  }
+  16% {
+    background-color: rgb(255, 255, 0);
+  }
+  25% {
+    background-color: rgb(127, 255, 0);
+  }
+  33% {
+    background-color: rgb(0, 255, 0);
+  }
+  41% {
+    background-color: rgb(0, 255, 127);
+  }
+  50% {
+    background-color: rgb(0, 255, 255);
+  }
+  58% {
+    background-color: rgb(0, 127, 255);
+  }
+  66% {
+    background-color: rgb(0, 0, 255);
+  }
+  75% {
+    background-color: rgb(127, 0, 255);
+  }
+  83% {
+    background-color: rgb(255, 0, 255);
+  }
+  91% {
+    background-color: rgb(255, 0, 127);
+  }
 }

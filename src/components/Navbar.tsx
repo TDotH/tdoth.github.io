@@ -1,0 +1,23 @@
+interface NavItemProps {
+  active?: boolean;
+  onClick: () => void;
+  name: string;
+}
+
+interface NavbarProps {
+  items: NavItemProps[];
+}
+
+function Navbar({ items }: NavbarProps) {
+  return (
+    <div className="w-dvw h-16 justify-center flex items-center px-4 gap-4">
+      <div className="flex gap-4 border-2 border-slate-700 px-5 py-3 rounded-full text-lg backdrop-blur-md bg-white/10">
+        {items.map((item, idx) => {
+          return <div key={idx}>{item.name}</div>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
