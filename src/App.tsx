@@ -4,12 +4,14 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Introduction from "./features/Introduction";
+import WorkExperience from "./features/WorkExperience";
+import Projects from "./features/Projects";
 
 function App() {
   const currentSection = useState("About Me");
 
   return (
-    <div className="w-dvw h-dvh bg-slate-900 text-white flex flex-col">
+    <div className="w-full min-h-[100dvh] bg-slate-900 text-white flex flex-col">
       <Navbar
         items={[
           { name: "About Me", onClick: () => {} },
@@ -18,7 +20,11 @@ function App() {
           { name: "Projects", onClick: () => {} },
         ]}
       />
-      <Introduction />
+      <div>
+        {/* <Introduction /> */}
+        <WorkExperience />
+        <Projects />
+      </div>
     </div>
   );
 }

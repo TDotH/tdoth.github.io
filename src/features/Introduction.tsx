@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Typer from "../components/Typer/Typer";
+import Typer from "../components/typer/Typer";
 
 const descriptions = [
   "a Full-Stack Developer",
@@ -9,12 +9,10 @@ const descriptions = [
 ];
 
 function Introduction() {
-  const seenAnimation = useState(false);
-
   return (
-    <div className="transition-opacity flex flex-1 justify-center items-center">
+    <div className="h-[100vh] flex flex-1 justify-center items-center">
       <div className="flex gap-8">
-        <img className="rounded-md" src="/pfp.png" />
+        <img className="rounded-md" src="./assets/pfp.png" />
         <div className="flex flex-col justify-center text-xl">
           <h1 className="mb-3">Tyde Hashimoto 👋</h1>
           <div className="flex text-4xl">
