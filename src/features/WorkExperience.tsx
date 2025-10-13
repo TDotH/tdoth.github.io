@@ -20,7 +20,7 @@ function WorkExperience({}: WorkExperienceProps) {
       <Button onClick={toggleCard} className="mb-4">
         {showCard ? "Hide Details" : "Show Details"}
       </Button>
-      <div className="w-full p-2 sm:p-0 md:ml-[55%] lg:ml-[65%]">
+      <div className="w-full p-2 space-y-16 sm:p-0  lg:ml-[55%]">
         <WorkCard
           show={showCard}
           company="Currie & Brown"
@@ -35,7 +35,7 @@ function WorkExperience({}: WorkExperienceProps) {
             "Participate in code reviews and contribute to team knowledge sharing.",
           ]}
           logoSrc={cbLogo}
-          className="w-full h-[500px]"
+          className="w-full"
         />
       </div>
     </div>

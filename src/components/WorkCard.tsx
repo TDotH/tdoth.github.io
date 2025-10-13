@@ -1,3 +1,5 @@
+import VerticalConnector from "./ui/verticalConnector";
+
 interface WorkCardProps {
   company: string;
   position: string;
@@ -22,7 +24,7 @@ function WorkCard({
   return (
     <div
       className={
-        "flex flex-row-reverse transition-transform duration-800 group " +
+        "flex flex-row-reverse items-stretch transition-transform duration-800 group " +
         (!show ? "translate-x-full " : "") +
         (className ?? "")
       }
@@ -50,38 +52,12 @@ function WorkCard({
           ))}
         </ul>
       </div>
-      <div
-        className={
-          "h-full w-[200px] mr-4 text-lg flex-col overflow-y-hidden hidden md:flex "
-        }
-      >
-        <div className="h-full flex flex-col justify-between items-center">
-          <div
-            className={
-              "z-2 bg-slate-900 p-2 rounded border-1 border-slate-800 transition-opacity duration-400 opacity-0 " +
-              (show ? " delay-750 opacity-100 " : "")
-            }
-          >
-            {endDate}
-          </div>
-          <div
-            className={
-              "w-[3px] transition-all bg-slate-800 ease-in-out flex-grow-1 " +
-              (show
-                ? "  duration-1900 delay-950 opacity-100 "
-                : " -translate-y-[125%] opacity-0 ")
-            }
-          ></div>
-          <div
-            className={
-              "z-2 bg-slate-900 p-2 rounded border-1 border-slate-800 transition-opacity duration-400 opacity-0 " +
-              (show ? " delay-2900 opacity-100 " : "")
-            }
-          >
-            {startDate}
-          </div>
-        </div>
-      </div>
+      <VerticalConnector
+        startText={startDate}
+        endText={endDate ?? "Present"}
+        show={show}
+        className="mx-4"
+      />
     </div>
   );
 }
