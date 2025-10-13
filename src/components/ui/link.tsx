@@ -1,12 +1,22 @@
-interface ButtonProps {
+interface LinkProps {
   children: React.ReactNode;
+  className?: string;
+  url: string;
 }
 
-function Link({ children }: ButtonProps) {
+function Link({ className, children, url }: LinkProps) {
   return (
-    <span className="p-2 cursor-pointer hover:bg-zinc-700/50 active:bg-zinc-800/80 text-white rounded-full transition-colors">
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      className={
+        "p-1 cursor-pointer hover:bg-zinc-700/50 active:bg-zinc-800/80 text-white rounded-md transition-colors " +
+        (className ?? "")
+      }
+    >
       {children}
-    </span>
+    </a>
   );
 }
 

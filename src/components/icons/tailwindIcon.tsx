@@ -10,7 +10,7 @@ function TailwindIcon({ className }: ReactIconProps) {
       viewBox="0 0 54 33"
       className={className}
     >
-      <g clip-path="url(#prefix__clip0)">
+      <g clipPath="url(#prefix__clip0)">
         <path
           fill="#38bdf8"
           fillRule="evenodd"
