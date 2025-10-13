@@ -1,9 +1,43 @@
+import { useState } from "react";
+import cbLogo from "../assets/employment/cb-logo-m.png";
+import WorkCard from "../components/WorkCard";
+import Button from "../components/ui/button";
+
 interface WorkExperienceProps {}
 
 function WorkExperience({}: WorkExperienceProps) {
+  const [showCard, setShowCard] = useState(false);
+
+  const toggleCard = () => {
+    setShowCard(!showCard);
+  };
+
   return (
-    <div className="flex flex-1 justify-center items-center">
-      <div>Work Experience</div>
+    <div className="flex flex-1 flex-col justify-center items-center overflow-x-hidden ">
+      <div className="text-4xl mb-6">
+        <h2>Work Experience</h2>
+      </div>
+      <Button onClick={toggleCard} className="mb-4">
+        {showCard ? "Hide Details" : "Show Details"}
+      </Button>
+      <div className="w-full p-2 sm:p-0 md:ml-[55%] lg:ml-[65%]">
+        <WorkCard
+          show={showCard}
+          company="Currie & Brown"
+          position="Front-end Engineer"
+          startDate="June 2023"
+          endDate="Present"
+          responsibilities={[
+            "Develop and maintain web applications using React and TypeScript.",
+            "Collaborate with cross-functional teams to define, design, and ship new features.",
+            "Optimize applications for maximum speed and scalability.",
+            "Implement responsive design to ensure compatibility across various devices and screen sizes.",
+            "Participate in code reviews and contribute to team knowledge sharing.",
+          ]}
+          logoSrc={cbLogo}
+          className="w-full h-[500px]"
+        />
+      </div>
     </div>
   );
 }

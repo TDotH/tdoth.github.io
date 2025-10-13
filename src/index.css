@@ -16,6 +16,11 @@
 
   /* variables */
   --color-red: rgb(255, 0, 0);
+  --color-background: #0f172b; /* Tailwind slate-900 */
+}
+
+@theme {
+  --color-background: #0f172b;
 }
 
 h1 {
