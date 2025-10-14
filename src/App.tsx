@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Introduction from "./features/Introduction";
 import WorkExperience from "./features/WorkExperience";
 import Projects from "./features/Projects";
+import Footer from "./features/Footer";
+import AboutMe from "./features/AboutMe";
 
 function App() {
   const currentSection = useState("About Me");
@@ -21,10 +23,12 @@ function App() {
         ]}
       />
       <div>
-        {/* <Introduction /> */}
+        <Introduction />
+        <AboutMe />
         <WorkExperience />
         <Projects />
       </div>
+      <Footer />
     </div>
   );
 }

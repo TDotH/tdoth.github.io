@@ -21,7 +21,7 @@ const pastProjects: ProjectCardProps[] = [];
 
 function Projects({}: ProjectsProps) {
   return (
-    <div className="w-full flex flex-col justify-center items-center my-8">
+    <div className="w-full min-h-[100vh] flex flex-col items-center py-8">
       <div className="text-4xl mb-6">
         <h2>Projects</h2>
       </div>

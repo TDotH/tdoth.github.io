@@ -4,6 +4,7 @@ function TypeScriptIcon({ className }: IconProps) {
   return (
     <svg
       fill="none"
+      className={className}
       height="128"
       viewBox="0 0 128 128"
       width="128"
