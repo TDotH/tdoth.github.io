@@ -1,27 +1,32 @@
 import ProjectCard, { type ProjectCardProps } from "../components/ProjectCard";
+import type { SectionProps } from "./types";
 
-interface ProjectsProps {}
+interface ProjectsProps extends SectionProps {
+  currentProjects?: ProjectCardProps[];
+  pastProjects?: ProjectCardProps[];
+}
 
-const currentProjects: ProjectCardProps[] = [
-  {
-    title: "Wani Tracker",
-    description:
-      "A web app to help track Japanese learning progress using WaniKani's API.",
-    tags: ["react", "tailwind"],
-    githubUrl: "https://github.com/TDotH/wani-tracker",
-  },
-  {
-    title: "Abacus",
-    description: "A budgeting app to help track expenses and income, and more.",
-    tags: ["react", "tailwind"],
-  },
-];
-
-const pastProjects: ProjectCardProps[] = [];
-
-function Projects({}: ProjectsProps) {
+/**
+ * Projects section displaying current and past projects.
+ * Projects can be modified in the config.ts file.
+ * @param ref - Reference to the section element.
+ * @param sectionName - Name of the section.
+ * @param currentProjects - List of current projects to display.
+ * @param pastProjects - List of past projects to display.
+ * @returns JSX.Element
+ */
+function Projects({
+  ref,
+  sectionName,
+  currentProjects,
+  pastProjects,
+}: ProjectsProps) {
   return (
-    <div className="w-full min-h-[100vh] flex flex-col items-center py-8">
+    <section
+      ref={ref}
+      id={sectionName}
+      className="w-full min-h-[100vh] flex flex-col items-center py-8"
+    >
       <div className="text-4xl mb-6">
         <h2>Projects</h2>
       </div>
@@ -31,8 +36,8 @@ function Projects({}: ProjectsProps) {
             <h3>Currently Working On:</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[repeat(4,300px)] place-items-center gap-5 mx-2">
-            {currentProjects.length !== 0 ? (
-              currentProjects.map((project, idx) => {
+            {currentProjects?.length !== 0 ? (
+              currentProjects?.map((project, idx) => {
                 return (
                   <ProjectCard
                     key={idx}
@@ -59,8 +64,8 @@ function Projects({}: ProjectsProps) {
             <h3>Past Projects:</h3>
           </div>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 ">
-            {pastProjects.length !== 0 ? (
-              pastProjects.map((project, idx) => {
+            {pastProjects?.length !== 0 ? (
+              pastProjects?.map((project, idx) => {
                 return (
                   <ProjectCard
                     key={idx}
@@ -82,7 +87,7 @@ function Projects({}: ProjectsProps) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,31 +1,19 @@
 import { useState } from "react";
-import cbLogo from "../assets/employment/cb-logo-m.png";
 import WorkCard from "../components/WorkCard";
 import Button from "../components/ui/button";
 import type { SkillChartData } from "../components/SkillsPieChart";
 import SkillsPieChart from "../components/SkillsPieChart";
+import type { SectionProps, WorkExperienceSection } from "./types";
 
-interface WorkExperienceProps {}
+interface WorkExperienceProps extends SectionProps {
+  workExperiences?: WorkExperienceSection[];
+}
 
-const workExperienceData: SkillChartData[] = [
-  {
-    name: "React",
-    value: 60,
-    color: "#61DAFB",
-  },
-  {
-    name: "Typescript",
-    value: 30,
-    color: "#007ACC",
-  },
-  {
-    name: "C#",
-    value: 10,
-    color: "#68217A",
-  },
-];
-
-function WorkExperience({}: WorkExperienceProps) {
+function WorkExperience({
+  sectionName,
+  ref,
+  workExperiences,
+}: WorkExperienceProps) {
   const [showCard, setShowCard] = useState(false);
   const [showChartAnimation, setShowChartAnimation] = useState(false);
 
@@ -39,46 +27,49 @@ function WorkExperience({}: WorkExperienceProps) {
   };
 
   return (
-    <div className="min-h-[100vh] flex flex-1 flex-col items-center overflow-x-hidden py-8">
+    <section
+      ref={ref}
+      id={sectionName}
+      className="min-h-[100vh] flex flex-1 flex-col items-center overflow-x-hidden py-8"
+    >
       <div className="text-4xl mb-6">
         <h2>Work Experience</h2>
       </div>
       <Button onClick={toggleCard} className="mb-4">
         {showCard ? "Hide Details" : "Show Details"}
       </Button>
-      <div className="flex w-full p-2 space-y-16 sm:p-0 lg:ml-[40%]">
+      {workExperiences?.map((section, index) => (
         <div
-          className={
-            "transition-opacity duration-500 hidden lg:block opacity-0 " +
-            (showCard ? "delay-800 opacity-100" : "")
-          }
+          key={index}
+          className="flex w-full p-2 space-y-16 sm:p-0 lg:ml-[40%]"
         >
-          <h3 className="flex justify-center text-xl font-semibold mb-3">
-            Core Technologies Used (by time spent):
-          </h3>
-          <SkillsPieChart
-            data={workExperienceData}
-            showChartAnimation={showChartAnimation}
+          <div
+            className={
+              "transition-opacity duration-500 hidden lg:block opacity-0 " +
+              (showCard ? "delay-800 opacity-100" : "")
+            }
+          >
+            <h3 className="flex justify-center text-xl font-semibold mb-3">
+              Core Technologies Used (by time spent):
+            </h3>
+            <SkillsPieChart
+              data={section.skillsData}
+              showChartAnimation={showChartAnimation}
+            />
+          </div>
+          <WorkCard
+            company={section.workExperience.company}
+            position={section.workExperience.position}
+            startDate={section.workExperience.startDate}
+            endDate={section.workExperience.endDate}
+            responsibilities={section.workExperience.responsibilities}
+            logoSrc={section.workExperience.logoSrc}
+            show={showCard}
+            className="w-full"
           />
         </div>
-        <WorkCard
-          show={showCard}
-          company="Currie & Brown"
-          position="Front-end Engineer"
-          startDate="June 2023"
-          endDate="Present"
-          responsibilities={[
-            "Develop and maintain web applications using React and TypeScript.",
-            "Collaborate with cross-functional teams to define, design, and ship new features.",
-            "Optimize applications for maximum speed and scalability.",
-            "Implement responsive design to ensure compatibility across various devices and screen sizes.",
-            "Participate in code reviews and contribute to team knowledge sharing.",
-          ]}
-          logoSrc={cbLogo}
-          className="w-full"
-        />
-      </div>
-    </div>
+      ))}
+    </section>
   );
 }
 

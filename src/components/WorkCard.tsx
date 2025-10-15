@@ -1,14 +1,9 @@
+import type { WorkExperience } from "../features/types";
 import ReactIcon from "./icons/reactIcon";
 import TypeScriptIcon from "./icons/typescriptIcon";
 import VerticalConnector from "./ui/verticalConnector";
 
-export interface WorkCardProps {
-  company: string;
-  position: string;
-  startDate: string;
-  endDate?: string;
-  responsibilities: string[];
-  logoSrc?: string;
+export interface WorkCardProps extends WorkExperience {
   className?: string;
   show: boolean;
 }

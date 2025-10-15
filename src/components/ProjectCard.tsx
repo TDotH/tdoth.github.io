@@ -1,21 +1,13 @@
 import { useMemo } from "react";
 import { ReactBadge, TailwindBadge } from "./badges/badges";
 import Badge from "./ui/badge";
-import Button from "./ui/button";
 import Link from "./ui/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import type { Project } from "../features/types";
 
-type allowedTags = "react" | "tailwind";
-
-export interface ProjectCardProps {
-  imgSrc?: string;
-  title: string;
-  description?: string;
-  websiteUrl?: string;
-  githubUrl?: string;
-  tags?: allowedTags[];
+export interface ProjectCardProps extends Project {
   className?: string;
 }
 

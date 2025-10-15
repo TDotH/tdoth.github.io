@@ -1,24 +1,32 @@
-interface AboutMeProps {
+import type { SectionProps } from "./types";
+
+interface AboutMeProps extends SectionProps {
   className?: string;
+  aboutMeText?: string;
+  photosSrcs?: string[];
 }
 
-function AboutMe({ className }: AboutMeProps) {
+function AboutMe({
+  ref,
+  sectionName,
+  className,
+  aboutMeText,
+  photosSrcs,
+}: AboutMeProps) {
   return (
     <section
+      ref={ref}
+      id={sectionName}
       className={
-        "w-full max-w-4xl p-4 mx-auto my-8 bg-slate-800 rounded-lg shadow-lg " +
-        (className ?? "")
+        "w-full min-h-[100vh] max-w-4xl p-4 mx-auto my-8  " + (className ?? "")
       }
     >
-      <h2 className="text-3xl font-bold mb-4">About Me</h2>
-      <p className="text-lg text-slate-300">
-        Hello! I'm Tyde, a passionate software developer with a love for
-        creating innovative solutions. With a background in computer science and
-        years of experience in full-stack development, I enjoy working on
-        projects that challenge me to learn and grow. When I'm not coding, you
-        can find me exploring the outdoors, reading tech blogs, or experimenting
-        with new programming languages and frameworks.
-      </p>
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6">
+        <h2 className="text-3xl font-bold mb-4">About Me</h2>
+        <p className="text-lg text-slate-300">
+          {aboutMeText ?? "Add Stuff Here"}
+        </p>
+      </div>
     </section>
   );
 }

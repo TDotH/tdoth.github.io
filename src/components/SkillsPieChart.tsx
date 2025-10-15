@@ -1,6 +1,4 @@
-import { Cell, Pie } from "recharts";
-import { PieChart } from "recharts/types/chart/PieChart";
-import { Legend } from "recharts/types/component/Legend";
+import { Cell, Pie, PieChart, Legend } from "recharts";
 
 interface SkillsPieChartProps {
   data: { name: string; value: number; color: string }[];
@@ -48,10 +46,28 @@ const renderCustomizedLabel = ({
   );
 };
 
+const renderLegend = (props: any) => {
+  const { payload }: { payload: SkillChartData[] } = props;
+  console.log(props);
+
+  return (
+    <ul className={`flex justify-center p-2 gap-6 items-center`}>
+      {payload.map((entry, index) => (
+        <li key={`item-${index}`} className="flex items-center space-x-1">
+          <div
+            className="w-4 h-4 rounded-sm"
+            style={{ backgroundColor: entry.color }}
+          />
+          <span>{entry.value}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 function SkillsPieChart({ data, showChartAnimation }: SkillsPieChartProps) {
   return (
     <div>
-      <h3>Skills Breakdown</h3>
       <PieChart width={400} height={400}>
         <Pie
           data={data}
@@ -73,13 +89,17 @@ function SkillsPieChart({ data, showChartAnimation }: SkillsPieChartProps) {
               fill={entry.color}
               stroke={entry.color}
               strokeWidth={2}
-              rx={20}
+              rx={20 + (entry.name == "React" ? 10 : 0)}
               ry={220}
-              radius={10}
             />
           ))}
         </Pie>
-        <Legend verticalAlign="top" height={36} />
+        <Legend
+          verticalAlign="top"
+          height={36}
+          iconSize={24}
+          content={renderLegend}
+        />
       </PieChart>
     </div>
   );
