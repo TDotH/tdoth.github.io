@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
 import Button from "../components/ui/button";
-import type { SkillChartData } from "../components/SkillsPieChart";
 import SkillsPieChart from "../components/SkillsPieChart";
 import type { SectionProps, WorkExperienceSection } from "./types";
 
@@ -9,13 +8,29 @@ interface WorkExperienceProps extends SectionProps {
   workExperiences?: WorkExperienceSection[];
 }
 
+interface IntersectionObserverOptions {
+  root: HTMLElement | null;
+  rootMargin: string;
+  threshold: number;
+}
+
+/* Options for IntersectionObserver to trigger when 75% of the element is visible,
+   with a root margin to trigger slightly before fully in view */
+const intersectionObserverOptions: IntersectionObserverOptions = {
+  root: null,
+  rootMargin: "0% 0% -25% 0%",
+  threshold: 0.75,
+};
+
 function WorkExperience({
   sectionName,
-  ref,
   workExperiences,
+  ref,
 }: WorkExperienceProps) {
   const [showCard, setShowCard] = useState(false);
   const [showChartAnimation, setShowChartAnimation] = useState(false);
+  const workExperienceRefs = useRef<(HTMLElement | null)[]>([]);
+  const workExperienceObserverRef = useRef<IntersectionObserver | null>(null);
 
   const toggleCard = () => {
     setShowCard(!showCard);
@@ -26,13 +41,32 @@ function WorkExperience({
     }, 800);
   };
 
+  useEffect(() => {
+    workExperienceObserverRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log("Toggling work experience card visibility");
+          toggleCard();
+        }
+      });
+    }, intersectionObserverOptions);
+
+    workExperienceRefs.current.forEach((section) => {
+      if (section) workExperienceObserverRef.current?.observe(section);
+    });
+    return () => workExperienceObserverRef.current?.disconnect();
+  }, [workExperienceRefs]);
+
   return (
     <section
       ref={ref}
       id={sectionName}
       className="min-h-[100vh] flex flex-1 flex-col items-center overflow-x-hidden py-8"
     >
-      <div className="text-4xl mb-6">
+      <div
+        //ref={(el) => (workExperienceRefs.current[0] = el)}
+        className="text-4xl mb-6"
+      >
         <h2>Work Experience</h2>
       </div>
       <Button onClick={toggleCard} className="mb-4">
@@ -40,6 +74,10 @@ function WorkExperience({
       </Button>
       {workExperiences?.map((section, index) => (
         <div
+          // @ts-ignore -- ref forwarding issue
+          ref={(el: HTMLDivElement | null) =>
+            (workExperienceRefs.current[index] = el)
+          }
           key={index}
           className="flex w-full p-2 space-y-16 sm:p-0 lg:ml-[40%]"
         >

@@ -42,8 +42,8 @@ function ProjectCard({
     >
       <div
         className={
-          "h-[300px] flex flex-col border-2 border-slate-700 rounded-lg bg-cover bg-center drop-shadow-sm hover:drop-shadow-lg " +
-          (imgSrc ? "bg-[url('" + imgSrc + "')] " : "bg-slate-700")
+          "h-[300px] flex flex-col border-1 border-primary-50/20 rounded-lg bg-cover bg-center drop-shadow-sm hover:drop-shadow-lg " +
+          (imgSrc ? "bg-[url('" + imgSrc + "')] " : "bg-white/20")
         }
       >
         <div className="w-full mb-4 rounded-lg">
@@ -51,7 +51,7 @@ function ProjectCard({
             <div className="flex flex-1">
               {githubUrl && (
                 <Link
-                  className="text-white/40 hover:text-white/60 active:text-white/50"
+                  className="text-white/40 hover:text-white/60 active:text-white/50 flex items-center"
                   url={githubUrl}
                 >
                   <FontAwesomeIcon
@@ -64,7 +64,7 @@ function ProjectCard({
             </div>
             {websiteUrl && (
               <Link
-                className="text-white/40 hover:text-white/60 active:text-white/50"
+                className="text-white/40 hover:text-white/60 active:text-white/50 flex items-center"
                 url={websiteUrl}
               >
                 <FontAwesomeIcon size="xl" icon={faArrowUpRightFromSquare} />

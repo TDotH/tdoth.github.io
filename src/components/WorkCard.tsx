@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import type { WorkExperience } from "../features/types";
 import ReactIcon from "./icons/reactIcon";
 import TypeScriptIcon from "./icons/typescriptIcon";
@@ -6,6 +7,7 @@ import VerticalConnector from "./ui/verticalConnector";
 export interface WorkCardProps extends WorkExperience {
   className?: string;
   show: boolean;
+  ref?: Ref<HTMLDivElement | null>;
 }
 
 function WorkCard({
@@ -17,9 +19,11 @@ function WorkCard({
   logoSrc,
   className,
   show,
+  ref,
 }: WorkCardProps) {
   return (
     <div
+      ref={ref}
       className={
         "flex flex-row-reverse items-stretch transition-transform duration-800 group " +
         (!show ? "translate-x-full " : "") +
