@@ -1,7 +1,6 @@
 import type { SectionProps } from "./types";
 
 interface AboutMeProps extends SectionProps {
-  className?: string;
   aboutMeText?: string;
   photosSrcs?: string[];
 }
@@ -17,11 +16,10 @@ function AboutMe({
     <section
       ref={ref}
       id={sectionName}
-      className={
-        "w-full min-h-[100vh] p-4 mx-auto bg-primary-100 " + (className ?? "")
-      }
+      className={"w-full mx-auto bg-primary-100 " + (className ?? "")}
     >
       <div>
+        <div></div>
         <div className="bg-slate-800 rounded-lg shadow-lg p-6">
           <h2 className="text-3xl font-bold text-white mb-4">About Me</h2>
           <p className="text-lg text-slate-300">

@@ -1,6 +1,9 @@
+import type { Ref } from "react";
+
 export interface SectionProps {
-  ref?: React.RefObject<HTMLElement | null>;
+  ref?: Ref<HTMLElement | null>;
   sectionName: string;
+  className?: string;
 }
 
 export interface AboutMe {
@@ -37,4 +40,10 @@ export interface Project {
   websiteUrl?: string;
   githubUrl?: string;
   tags?: allowedTags[];
+}
+
+export interface IntersectionObserverOptions {
+  root: HTMLElement | null;
+  rootMargin: string;
+  threshold: number;
 }

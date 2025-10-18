@@ -6,12 +6,20 @@ interface IntroductionProps extends SectionProps {
   descriptions?: string[];
 }
 
-function Introduction({ ref, sectionName, descriptions }: IntroductionProps) {
+function Introduction({
+  ref,
+  sectionName,
+  descriptions,
+  className,
+}: IntroductionProps) {
   return (
     <section
       ref={ref}
       id={sectionName}
-      className="h-[100vh] flex flex-1 justify-center items-center"
+      className={
+        "flex flex-1 justify-center items-center" +
+        (className ? " " + className : "")
+      }
     >
       <div className="flex gap-8">
         <img className="rounded-md" src={pfp} />

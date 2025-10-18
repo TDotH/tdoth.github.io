@@ -2,16 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
 import Button from "../components/ui/button";
 import SkillsPieChart from "../components/SkillsPieChart";
-import type { SectionProps, WorkExperienceSection } from "./types";
+import type {
+  IntersectionObserverOptions,
+  SectionProps,
+  WorkExperienceSection,
+} from "./types";
 
 interface WorkExperienceProps extends SectionProps {
   workExperiences?: WorkExperienceSection[];
-}
-
-interface IntersectionObserverOptions {
-  root: HTMLElement | null;
-  rootMargin: string;
-  threshold: number;
 }
 
 /* Options for IntersectionObserver to trigger when 75% of the element is visible,
@@ -25,6 +23,7 @@ const intersectionObserverOptions: IntersectionObserverOptions = {
 function WorkExperience({
   sectionName,
   workExperiences,
+  className,
   ref,
 }: WorkExperienceProps) {
   const [showCard, setShowCard] = useState(false);
@@ -45,7 +44,6 @@ function WorkExperience({
     workExperienceObserverRef.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log("Toggling work experience card visibility");
           toggleCard();
         }
       });
@@ -61,7 +59,10 @@ function WorkExperience({
     <section
       ref={ref}
       id={sectionName}
-      className="min-h-[100vh] flex flex-1 flex-col items-center overflow-x-hidden py-8 bg-primary-300 text-primary-50"
+      className={
+        "flex flex-1 flex-col items-center overflow-x-hidden bg-primary-300 text-primary-50" +
+        (className ? " " + className : "")
+      }
     >
       <div
         //ref={(el) => (workExperienceRefs.current[0] = el)}
