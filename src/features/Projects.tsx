@@ -27,7 +27,7 @@ function Projects({
       ref={ref}
       id={sectionName}
       className={
-        "w-full flex flex-col items-center bg-primary-400 text-primary-50 " +
+        "w-full flex flex-col items-center text-primary-50 " +
         (className ? className : "")
       }
     >

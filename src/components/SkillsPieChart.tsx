@@ -32,7 +32,7 @@ const renderCustomizedLabel = ({
   percent,
   ...props
 }: LabelProps) => {
-  console.log(props);
+  //console.log(props);
   return (
     <text
       x={x}
@@ -48,7 +48,7 @@ const renderCustomizedLabel = ({
 
 const renderLegend = (props: any) => {
   const { payload }: { payload: SkillChartData[] } = props;
-  console.log(props);
+  //console.log(props);
 
   return (
     <ul className={`flex justify-center p-2 gap-6 items-center`}>

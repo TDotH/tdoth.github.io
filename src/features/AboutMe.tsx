@@ -16,7 +16,7 @@ function AboutMe({
     <section
       ref={ref}
       id={sectionName}
-      className={"w-full mx-auto bg-primary-100 " + (className ?? "")}
+      className={"w-full mx-auto  " + (className ?? "")}
     >
       <div>
         <div></div>

@@ -23,16 +23,24 @@ const SectionNames = {
   Introduction: "Introduction",
 };
 
+const sectionColors = {
+  [SectionNames.Introduction]: "bg-primary-50",
+  [SectionNames.AboutMe]: "bg-primary-100",
+  [SectionNames.WorkExperience]: "bg-primary-300",
+  [SectionNames.Projects]: "bg-primary-400",
+};
+
 /* Options for IntersectionObserver to trigger when 75% of the element is visible,
    with a root margin to trigger slightly before fully in view */
 const intersectionObserverOptions: IntersectionObserverOptions = {
   root: null,
-  rootMargin: "0% 0% -25% 0%",
-  threshold: 0.75,
+  rootMargin: "0% 0% 0% 0%",
+  threshold: 0.65,
 };
 
 function App() {
   const isMobile = useIsMobile();
+  const [currentSection, setCurrentSection] = useState<string>("");
   const [isScrollPressed, setIsScrollPressed] = useState<boolean>(false);
   const sectionRef = useRef<Record<string, HTMLElement | null>>({
     [SectionNames.AboutMe]: null,
@@ -40,53 +48,74 @@ function App() {
     [SectionNames.Projects]: null,
     [SectionNames.Introduction]: null,
   });
-  const sectionObserverRefs = useRef<(IntersectionObserver | null)[]>([]);
+  const sectionObserverRefs = useRef<
+    Record<string, IntersectionObserver | null>
+  >({
+    [SectionNames.AboutMe]: null,
+    [SectionNames.WorkExperience]: null,
+    [SectionNames.Projects]: null,
+    [SectionNames.Introduction]: null,
+  });
 
-  // useEffect(() => {
-  //   sectionObserverRefs.current = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //       }
-  //     });
-  //   }, intersectionObserverOptions);
+  useEffect(() => {
+    Object.keys(sectionObserverRefs.current).forEach((key) => {
+      sectionObserverRefs.current[key] = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log(`Entering ${entry.target.id} section`);
+            console.log(sectionColors);
+            setCurrentSection(entry.target.id);
+          }
+        });
+      }, intersectionObserverOptions);
+    });
 
-  //   sectionRef.current.forEach((section) => {
-  //     if (section) sectionObserverRefs.current?.observe(section);
-  //   });
-  //   return () => sectionObserverRefs.current?.disconnect();
-  // }, [sectionRef]);
+    Object.keys(sectionRef.current).forEach((key) => {
+      const section = sectionRef.current[key];
+      if (section) sectionObserverRefs.current[key]?.observe(section);
+    });
 
-  const items: NavItemProps[] = [
-    {
-      name: "About" + (isMobile ? "" : " Me"),
-      onClick: () => {},
-      className: "bg-primary-100",
-    },
-    {
-      name: "Skills",
-      onClick: () => {},
-      className: "bg-primary-200",
-    },
-    {
-      name: isMobile ? "Experience" : "Work Experience",
-      onClick: () => {},
-      className: "bg-primary-300",
-    },
-    {
-      name: "Projects",
-      onClick: () => {},
-      className: "bg-primary-400",
-    },
-  ];
+    return () => {
+      Object.keys(sectionObserverRefs.current).forEach((key) => {
+        sectionObserverRefs.current[key]?.disconnect();
+      });
+    };
+  }, [sectionRef]);
 
   const onNavClick = (section: string) => {
     sectionRef.current[section]?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const items: NavItemProps[] = [
+    {
+      name: "About" + (isMobile ? "" : " Me"),
+      onClick: () => onNavClick("About Me"),
+      className: "bg-primary-100",
+    },
+    {
+      name: "Skills",
+      onClick: () => onNavClick("Skills"),
+      className: "bg-primary-200",
+    },
+    {
+      name: isMobile ? "Experience" : "Work Experience",
+      onClick: () => onNavClick("Work Experience"),
+      className: "bg-primary-300",
+    },
+    {
+      name: "Projects",
+      onClick: () => onNavClick("Projects"),
+      className: "bg-primary-400",
+    },
+  ];
+
   return (
     <div
       className={
-        "w-full min-h-[100dvh] bg-background text-foreground flex flex-col cursor-default select-none"
+        "w-full min-h-[100dvh] transition-colors duration-550 text-foreground flex flex-col cursor-default select-none" +
+        (sectionColors[currentSection]
+          ? " " + sectionColors[currentSection]
+          : " bg-background ")
       }
     >
       <header className="w-full sticky top-0 z-10 h-16 justify-center md:justify-end flex items-center gap-4 text-primary-50">

@@ -60,7 +60,7 @@ function WorkExperience({
       ref={ref}
       id={sectionName}
       className={
-        "flex flex-1 flex-col items-center overflow-x-hidden bg-primary-300 text-primary-50" +
+        "flex flex-1 flex-col items-center overflow-x-hidden text-primary-50" +
         (className ? " " + className : "")
       }
     >
