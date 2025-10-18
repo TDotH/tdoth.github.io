@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Introduction from "./features/Introduction";
@@ -13,9 +13,10 @@ import {
   pastProjects,
   workExperiences,
 } from "./config";
+import { useIsMobile } from "./utils/useIsMobile";
 
 function App() {
-  const currentSection = useState("About Me");
+  const isMobile = useIsMobile();
   const workExperienceRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const aboutMeRef = useRef<HTMLElement>(null);
@@ -41,13 +42,26 @@ function App() {
     <div className="w-full min-h-[100dvh] bg-background text-foreground flex flex-col">
       <Navbar
         items={[
-          { name: "About Me", onClick: () => onNavClick("About Me") },
-          { name: "Skills", onClick: () => onNavClick("Skills") },
           {
-            name: "Work Experience",
-            onClick: () => onNavClick("Work Experience"),
+            name: "About" + (isMobile ? "" : " Me"),
+            onClick: () => onNavClick("About Me"),
+            className: "bg-primary-100",
           },
-          { name: "Projects", onClick: () => onNavClick("Projects") },
+          {
+            name: "Skills",
+            onClick: () => onNavClick("Skills"),
+            className: "bg-primary-200",
+          },
+          {
+            name: isMobile ? "Experience" : "Work Experience",
+            onClick: () => onNavClick("Work Experience"),
+            className: "bg-primary-300",
+          },
+          {
+            name: "Projects",
+            onClick: () => onNavClick("Projects"),
+            className: "bg-primary-400",
+          },
         ]}
       />
       <div>

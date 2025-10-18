@@ -25,7 +25,12 @@
   --secondary: #ff6584;
   --text-primary: #001b48;
   --text-secondary: #dde8f0;
-  --bg-primary: #f9f9f9;
+  --bg-primary-50: #dde8f0;
+  --bg-primary-100: #97cbdc;
+  --bg-primary-200: #018abd;
+  --bg-primary-300: #004581;
+  --bg-primary-400: #001b48;
+  --bg-primary: black;
   --bg-secondary: #e1e8ed;
 }
 
@@ -33,15 +38,18 @@
   --color-background: #ffffff;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary-50: var(--primary-50);
   --color-secondary: var(--secondary);
   --text-primary: var(--text-primary);
   --text-secondary: var(--text-secondary);
-  --bg-primary: var(--bg-primary);
   --bg-secondary: var(--bg-secondary);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
 }
 
 h1 {

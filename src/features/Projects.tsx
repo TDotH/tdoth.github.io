@@ -25,7 +25,7 @@ function Projects({
     <section
       ref={ref}
       id={sectionName}
-      className="w-full min-h-[100vh] flex flex-col items-center py-8"
+      className="w-full min-h-[100vh] flex flex-col items-center py-8 bg-primary-400 text-primary-50"
     >
       <div className="text-4xl mb-6">
         <h2>Projects</h2>

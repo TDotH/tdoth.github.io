@@ -61,7 +61,7 @@ function WorkExperience({
     <section
       ref={ref}
       id={sectionName}
-      className="min-h-[100vh] flex flex-1 flex-col items-center overflow-x-hidden py-8"
+      className="min-h-[100vh] flex flex-1 flex-col items-center overflow-x-hidden py-8 bg-primary-300 text-primary-50"
     >
       <div
         //ref={(el) => (workExperienceRefs.current[0] = el)}
