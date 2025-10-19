@@ -8,9 +8,10 @@ export interface NavItemProps {
 interface NavbarProps {
   items: NavItemProps[];
   isScrollPressed?: boolean;
+  currentSection: string;
 }
 
-function Navbar({ items, isScrollPressed }: NavbarProps) {
+function Navbar({ items, isScrollPressed, currentSection }: NavbarProps) {
   return (
     <nav className="flex h-full px-5 text-lg sm:mr-[2%] md:mr-[5%] xl:mr-[10%]">
       <ul className="flex">
@@ -19,7 +20,7 @@ function Navbar({ items, isScrollPressed }: NavbarProps) {
             <li
               className={
                 `flex flex-col md:transition-all duration-200 translate-y-[-55px] justify-end px-4 py-2 h-25 rounded-b-sm ${
-                  item.active
+                  currentSection === item.name
                     ? " cursor-default"
                     : " shadow-xl hover:translate-y-[-25px] cursor-pointer active:scale-90"
                 }` + (item.className ? " " + item.className : "bg-primary-400")

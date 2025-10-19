@@ -38,6 +38,15 @@
   --color-background: #ffffff;
 }
 
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -50,6 +59,7 @@
   --color-primary-200: var(--primary-200);
   --color-primary-300: var(--primary-300);
   --color-primary-400: var(--primary-400);
+  --animate-slide: slide 50s linear infinite;
 }
 
 h1 {

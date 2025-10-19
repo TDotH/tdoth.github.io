@@ -1,7 +1,12 @@
 import type { ProjectCardProps } from "./components/ProjectCard";
 import type { AboutMe, WorkExperienceSection } from "./features/types";
 import cbLogo from "./assets/employment/cb-logo-m.png";
-
+import about1 from "./assets/aboutMe/about1.jpg";
+import about2 from "./assets/aboutMe/about2.jpg";
+import about3 from "./assets/aboutMe/about3.jpg";
+import about4 from "./assets/aboutMe/about4.jpg";
+import about5 from "./assets/aboutMe/about5.jpg";
+import about6 from "./assets/aboutMe/about6.jpg";
 //#region Introduction
 
 const introductionDescriptions: string[] = [
@@ -21,10 +26,37 @@ const aboutMe: AboutMe = {
   I enjoy working on projects that challenge me to learn and grow. 
   When I'm not coding, you can find me exploring the outdoors, reading tech blogs, 
   or experimenting with new programming languages and frameworks.`,
-  photosSrcs: [
-    "./assets/about-me/photo1.jpg",
-    "./assets/about-me/photo2.jpg",
-    "./assets/about-me/photo3.jpg",
+  photos: [
+    {
+      src: about1,
+      title: "Ironman Finisher!",
+      description: "At the finish line of my first Ironman triathlon.",
+    },
+    {
+      src: about2,
+      title: "Tulip Fields in the Oregon Springtime.",
+      description: "Enjoying the vibrant colors of spring.",
+    },
+    {
+      src: about3,
+      title: "Italy Trip",
+      description: "Some cool street art",
+    },
+    {
+      src: about4,
+      title: "Italy Trip",
+      description: "Exploring the beautiful streets of Italy.",
+    },
+    {
+      src: about5,
+      title: "Oregon Springtime",
+      description: "Admiring the beautiful cherry blossoms.",
+    },
+    {
+      src: about6,
+      title: "Mochi",
+      description: "My cat being adorable.",
+    },
   ],
 };
 

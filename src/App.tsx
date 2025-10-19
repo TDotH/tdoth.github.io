@@ -119,7 +119,7 @@ function App() {
       }
     >
       <header className="w-full sticky top-0 z-10 h-16 justify-center md:justify-end flex items-center gap-4 text-primary-50">
-        <Navbar items={items} />
+        <Navbar items={items} currentSection={currentSection} />
       </header>
       <main>
         <Introduction
@@ -136,7 +136,7 @@ function App() {
             sectionRef.current["About Me"] = el;
           }}
           aboutMeText={aboutMe.aboutMeText}
-          photosSrcs={aboutMe.photosSrcs}
+          photos={aboutMe.photos}
           className="min-h-[120vh] py-24"
         />
         <WorkExperience

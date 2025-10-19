@@ -1,4 +1,5 @@
 import type { Ref } from "react";
+import type { photoProps } from "../components/photo/photo";
 
 export interface SectionProps {
   ref?: Ref<HTMLElement | null>;
@@ -8,7 +9,7 @@ export interface SectionProps {
 
 export interface AboutMe {
   aboutMeText: string;
-  photosSrcs?: string[];
+  photos?: photoProps[];
 }
 
 export interface WorkExperience {
