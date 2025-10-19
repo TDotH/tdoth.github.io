@@ -49,13 +49,13 @@ const aboutMe: AboutMe = {
     },
     {
       src: about5,
-      title: "Oregon Springtime",
-      description: "Admiring the beautiful cherry blossoms.",
+      title: "Mochi",
+      description: "My cat being adorable.",
     },
     {
       src: about6,
-      title: "Mochi",
-      description: "My cat being adorable.",
+      title: "Oregon Springtime",
+      description: "Admiring the beautiful cherry blossoms.",
     },
   ],
 };

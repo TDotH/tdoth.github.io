@@ -15,9 +15,11 @@ import {
 } from "./config";
 import { useIsMobile } from "./utils/useIsMobile";
 import type { IntersectionObserverOptions } from "./features/types";
+import Skills from "./features/Skills";
 
 const SectionNames = {
   AboutMe: "About Me",
+  Skills: "Skills",
   WorkExperience: "Work Experience",
   Projects: "Projects",
   Introduction: "Introduction",
@@ -26,6 +28,7 @@ const SectionNames = {
 const sectionColors = {
   [SectionNames.Introduction]: "bg-primary-50",
   [SectionNames.AboutMe]: "bg-primary-100",
+  [SectionNames.Skills]: "bg-primary-200",
   [SectionNames.WorkExperience]: "bg-primary-300",
   [SectionNames.Projects]: "bg-primary-400",
 };
@@ -44,6 +47,7 @@ function App() {
   const [isScrollPressed, setIsScrollPressed] = useState<boolean>(false);
   const sectionRef = useRef<Record<string, HTMLElement | null>>({
     [SectionNames.AboutMe]: null,
+    [SectionNames.Skills]: null,
     [SectionNames.WorkExperience]: null,
     [SectionNames.Projects]: null,
     [SectionNames.Introduction]: null,
@@ -52,6 +56,7 @@ function App() {
     Record<string, IntersectionObserver | null>
   >({
     [SectionNames.AboutMe]: null,
+    [SectionNames.Skills]: null,
     [SectionNames.WorkExperience]: null,
     [SectionNames.Projects]: null,
     [SectionNames.Introduction]: null,
@@ -63,7 +68,6 @@ function App() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             console.log(`Entering ${entry.target.id} section`);
-            console.log(sectionColors);
             setCurrentSection(entry.target.id);
           }
         });
@@ -137,6 +141,14 @@ function App() {
           }}
           aboutMeText={aboutMe.aboutMeText}
           photos={aboutMe.photos}
+          className="min-h-[120vh] py-24"
+        />
+        <Skills
+          sectionName="Skills"
+          ref={(el) => {
+            sectionRef.current["Skills"] = el;
+          }}
+          skillsData={[]}
           className="min-h-[120vh] py-24"
         />
         <WorkExperience
