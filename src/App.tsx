@@ -25,13 +25,10 @@ const SectionNames = {
   Introduction: "Introduction",
 };
 
-const sectionColors = {
-  [SectionNames.Introduction]: "bg-primary-50",
-  [SectionNames.AboutMe]: "bg-primary-100",
-  [SectionNames.Skills]: "bg-primary-200",
-  [SectionNames.WorkExperience]: "bg-primary-300",
-  [SectionNames.Projects]: "bg-primary-400",
-};
+//Create an array of section names from the SectionNames object, excluding the Introduction section
+const sectionNamesArray = Object.values(SectionNames).filter(
+  (name) => name !== SectionNames.Introduction
+);
 
 /* Options for IntersectionObserver to trigger when 75% of the element is visible,
    with a root margin to trigger slightly before fully in view */
@@ -45,6 +42,7 @@ function App() {
   const isMobile = useIsMobile();
   const [currentSection, setCurrentSection] = useState<string>("");
   const [isScrollPressed, setIsScrollPressed] = useState<boolean>(false);
+  const [showNavbar, setShowNavbar] = useState<boolean>(false);
   const sectionRef = useRef<Record<string, HTMLElement | null>>({
     [SectionNames.AboutMe]: null,
     [SectionNames.Skills]: null,
@@ -69,6 +67,11 @@ function App() {
           if (entry.isIntersecting) {
             console.log(`Entering ${entry.target.id} section`);
             setCurrentSection(entry.target.id);
+            if (entry.target.id === SectionNames.Introduction) {
+              setShowNavbar(false);
+            } else {
+              setShowNavbar(true);
+            }
           }
         });
       }, intersectionObserverOptions);
@@ -86,41 +89,22 @@ function App() {
     };
   }, [sectionRef]);
 
-  const onNavClick = (section: string) => {
-    sectionRef.current[section]?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const items: NavItemProps[] = [
-    {
-      name: "About" + (isMobile ? "" : " Me"),
-      onClick: () => onNavClick("About Me"),
-      className: "bg-primary-100",
-    },
-    {
-      name: "Skills",
-      onClick: () => onNavClick("Skills"),
-      className: "bg-primary-200",
-    },
-    {
-      name: isMobile ? "Experience" : "Work Experience",
-      onClick: () => onNavClick("Work Experience"),
-      className: "bg-primary-300",
-    },
-    {
-      name: "Projects",
-      onClick: () => onNavClick("Projects"),
-      className: "bg-primary-400",
-    },
-  ];
-
   return (
     <div
       className={
         "w-full min-h-[100dvh] bg-background text-foreground flex flex-col cursor-default select-none"
       }
     >
-      <header className="w-full sticky top-0 z-10 h-16 justify-center md:justify-end flex items-center gap-4 text-primary-50 hidden">
-        <Navbar items={items} currentSection={currentSection} />
+      <header
+        className={
+          "w-full sticky top-0 transition-translation duration-300 z-10 h-16 justify-between flex items-center gap-4 g-primary-400/30 backdrop-blur-md " +
+          (showNavbar ? " " : " -translate-y-20")
+        }
+      >
+        <p className="text-lg sm:ml-[2%] md:ml-[5%] xl:ml-[10%]">
+          Tyde Hashimoto
+        </p>
+        <Navbar items={sectionNamesArray} currentSection={currentSection} />
       </header>
       <main>
         <Introduction
@@ -130,12 +114,7 @@ function App() {
           }}
           descriptions={introductionDescriptions}
           className="h-[100vh]"
-          sections={[
-            SectionNames.AboutMe,
-            SectionNames.Skills,
-            SectionNames.WorkExperience,
-            SectionNames.Projects,
-          ]}
+          sections={sectionNamesArray}
         />
         <AboutMe
           sectionName="About"
@@ -144,7 +123,7 @@ function App() {
           }}
           aboutMeText={aboutMe.aboutMeText}
           photos={aboutMe.photos}
-          className="min-h-[120vh] py-24"
+          className="min-h-[120vh] my-24"
         />
         <Skills
           sectionName="Skills"

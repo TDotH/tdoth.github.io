@@ -6,40 +6,28 @@ export interface NavItemProps {
 }
 
 interface NavbarProps {
-  items: NavItemProps[];
-  isScrollPressed?: boolean;
+  items: string[];
   currentSection: string;
-  hide?: boolean;
+  activeSection?: string;
 }
 
-function Navbar({
-  items,
-  isScrollPressed,
-  currentSection,
-  hide = true,
-}: NavbarProps) {
+function Navbar({ items, currentSection }: NavbarProps) {
   return (
     <nav
-      className={
-        "flex h-full px-5 text-lg sm:mr-[2%] md:mr-[5%] xl:mr-[10%]  " +
-        (hide ? " hidden" : "")
-      }
+      className={"flex h-full px-5 text-lg sm:mr-[2%] md:mr-[5%] xl:mr-[10%]"}
     >
-      <ul className="flex">
+      <ul className="flex items-center">
         {items.map((item, idx) => {
           return (
             <li
-              className={
-                `flex flex-col md:transition-all duration-200 translate-y-[-55px] justify-end px-4 py-2 h-25 rounded-b-sm ${
-                  currentSection === item.name
-                    ? " cursor-default"
-                    : " shadow-xl hover:translate-y-[-25px] cursor-pointer active:scale-90"
-                }` + (item.className ? " " + item.className : "bg-primary-400")
-              }
-              onClick={!item.active ? item.onClick : undefined}
+              className={`flex flex-col md:transition-all duration-200 justify-end px-4 rounded-b-sm after:block after:origin-left after:scale-x-0 after:border-b-2 after:transition-all after:duration-350 after:ease-in-out hover:after:scale-x-100 hover:after:bg-foreground ${
+                currentSection === item
+                  ? " after:scale-x-100 after:bg-foreground font-bold cursor-default"
+                  : "  cursor-pointer "
+              }`}
               key={idx}
             >
-              <a>{item.name}</a>
+              <a href={`#${item}`}>{item}</a>
             </li>
           );
         })}

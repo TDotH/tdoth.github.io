@@ -29,22 +29,22 @@ const aboutMe: AboutMe = {
   photos: [
     {
       src: about1,
-      title: "Ironman Finisher!",
+      title: "Ironman 2024",
       description: "At the finish line of my first Ironman triathlon.",
     },
     {
       src: about2,
-      title: "Tulip Fields in the Oregon Springtime.",
+      title: "Oregon Tulips",
       description: "Enjoying the vibrant colors of spring.",
     },
     {
       src: about3,
-      title: "Italy Trip",
+      title: "Rome",
       description: "Some cool street art",
     },
     {
       src: about4,
-      title: "Italy Trip",
+      title: "Florence",
       description: "Exploring the beautiful streets of Italy.",
     },
     {
@@ -54,7 +54,7 @@ const aboutMe: AboutMe = {
     },
     {
       src: about6,
-      title: "Oregon Springtime",
+      title: "Oregon Spring",
       description: "Admiring the beautiful cherry blossoms.",
     },
   ],

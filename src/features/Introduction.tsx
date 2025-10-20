@@ -17,11 +17,11 @@ function Introduction({
       ref={ref}
       id={sectionName}
       className={
-        "flex flex-1 justify-center items-center" +
+        "flex flex-1 justify-center items-center pb-[30%] sm:pb-[10%] lg:pb-[10%] xl:pb-[0%]" +
         (className ? " " + className : "")
       }
     >
-      <div className="flex flex-col lg:flex-row gap-8 h-max items-stretch p-4 xl:p-0">
+      <div className="flex flex-col lg:flex-row gap-8 h-max items-stretch p-4 2xl:p-0">
         <div className="flex flex-col justify-center">
           <h1
             className={
