@@ -11,7 +11,7 @@ interface FooterProps {
   show?: boolean;
 }
 
-function Footer({ className, show }: FooterProps) {
+function Footer({ show }: FooterProps) {
   const isMobile = useIsMobile();
   return (
     <footer

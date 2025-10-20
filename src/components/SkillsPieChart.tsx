@@ -25,13 +25,7 @@ interface LabelProps {
   color?: string;
 }
 
-const renderCustomizedLabel = ({
-  tooltipPosition,
-  x,
-  y,
-  percent,
-  ...props
-}: LabelProps) => {
+const renderCustomizedLabel = ({ x, y, percent }: LabelProps) => {
   //console.log(props);
   return (
     <text

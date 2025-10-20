@@ -102,9 +102,11 @@ function App() {
           (showNavbar ? " " : " -translate-y-20")
         }
       >
-        <p className="text-lg sm:ml-[2%] md:ml-[5%] xl:ml-[10%]">
-          Tyde Hashimoto
-        </p>
+        {isMobile && (
+          <p className="text-lg sm:ml-[2%] md:ml-[5%] xl:ml-[10%]">
+            Tyde Hashimoto
+          </p>
+        )}
         <Navbar items={sectionNamesArray} currentSection={currentSection} />
       </header>
       <main>

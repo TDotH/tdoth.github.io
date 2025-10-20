@@ -15,7 +15,6 @@ function VerticalConnector({
   startText,
   endText,
   show,
-  bgColor,
   className,
 }: VerticalConnectorProps) {
   return (

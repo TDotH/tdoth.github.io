@@ -4,7 +4,7 @@ export interface photoProps {
   description?: string;
 }
 
-function Photo({ src, title, description }: photoProps) {
+function Photo({ src, title }: photoProps) {
   return (
     <article className="relative flex-1 flex-shrink-0 h-full w-max shadow-md">
       <img

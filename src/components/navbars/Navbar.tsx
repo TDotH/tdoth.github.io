@@ -12,12 +12,7 @@ interface NavbarProps {
   hide?: boolean;
 }
 
-function Navbar({
-  items,
-  isScrollPressed,
-  currentSection,
-  hide = true,
-}: NavbarProps) {
+function Navbar({ items, currentSection }: NavbarProps) {
   return (
     <nav
       className={"flex h-full px-5 text-lg sm:mr-[2%] md:mr-[5%] xl:mr-[10%]"}

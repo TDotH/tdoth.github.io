@@ -14,7 +14,6 @@ interface IntroductionProps extends SectionProps {
 function Introduction({
   ref,
   sectionName,
-  descriptions,
   sections,
   className,
 }: IntroductionProps) {

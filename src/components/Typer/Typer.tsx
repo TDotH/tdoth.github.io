@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./typer.css";
 
 interface TyperProps {
@@ -7,8 +6,6 @@ interface TyperProps {
 }
 
 function Typer({ text, className }: TyperProps) {
-  const runAnimation = useState(false);
-
   return (
     <div className={className}>
       <p className="typer">{text}</p>
