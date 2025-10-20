@@ -30,7 +30,7 @@ function WorkCard({
       }
       aria-hidden={!show}
     >
-      <div className="rounded-lg bg-background text-foreground flex flex-col rounded-lg p-4 max-w-2xl gap-2 shadow-xs z-2">
+      <div className="rounded-lg bg-background text-foreground flex flex-col rounded-lg p-4 max-w-3xl gap-2 shadow-xs z-2">
         <div className="flex flex-col">
           {/* {logoSrc && (
               <div className="mr-4 bg-white p-2 rounded-lg">
@@ -55,8 +55,10 @@ function WorkCard({
           ))}
         </ul>
         <div>
-          <h3 className="text-lg font-semibold mb-2">Key Responsibilities:</h3>
-          <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+          <h3 className="text-lg md:text-xl font-semibold mb-2">
+            Key Responsibilities:
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-base md:text-lg list-outside px-2">
             {responsibilities.map((item, index) => (
               <li key={index}>{item}</li>
             ))}

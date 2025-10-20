@@ -97,7 +97,7 @@ function App() {
     >
       <header
         className={
-          "w-full sticky top-0 transition-translation duration-300 z-10 h-10 md:h-16 justify-between flex items-center gap-4 backdrop-blur-md " +
+          "w-full bg-[url(./assets/ocean2.gif)]/40 sticky top-0 transition-translation duration-300 z-10 h-10 md:h-16 justify-between flex items-center gap-4 backdrop-blur-md " +
           (showNavbar ? " " : " -translate-y-20")
         }
       >
@@ -123,7 +123,7 @@ function App() {
           }}
           aboutMeText={aboutMe.aboutMeText}
           photos={aboutMe.photos}
-          className="my-24"
+          className="py-24"
         />
         <Skills
           sectionName="Skills"
@@ -131,7 +131,7 @@ function App() {
             sectionRef.current["Skills"] = el;
           }}
           skillsData={[]}
-          className="min-h-[120vh] py-24"
+          className="py-24"
         />
         <WorkExperience
           sectionName="Experience"
@@ -139,7 +139,7 @@ function App() {
             sectionRef.current["Experience"] = el;
           }}
           workExperiences={workExperiences}
-          className={"py-24"}
+          className={"min-h-[85vh] py-24"}
         />
         <Projects
           sectionName="Projects"
@@ -148,7 +148,7 @@ function App() {
           }}
           currentProjects={currentProjects}
           pastProjects={pastProjects}
-          className="min-h-[120vh] py-24"
+          className="min-h-[85vh] py-24"
         />
       </main>
       <Footer />

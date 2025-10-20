@@ -7,6 +7,7 @@ import about3 from "./assets/aboutMe/about3.jpg";
 import about4 from "./assets/aboutMe/about4.jpg";
 import about5 from "./assets/aboutMe/about5.jpg";
 import about6 from "./assets/aboutMe/about6.jpg";
+import test from "./assets/aboutMe/test1.jpg";
 //#region Introduction
 
 const introductionDescriptions: string[] = [
@@ -73,11 +74,10 @@ const workExperiences: WorkExperienceSection[] = [
       endDate: "Present",
       logoSrc: cbLogo,
       responsibilities: [
-        "Develop and maintain web applications using React and TypeScript.",
-        "Collaborate with cross-functional teams to define, design, and ship new features.",
-        "Optimize applications for maximum speed and scalability.",
-        "Implement responsive design to ensure compatibility across various devices and screen sizes.",
-        "Participate in code reviews and contribute to team knowledge sharing.",
+        "Lead the re-architecture of the front-end framework to React, working in close collaboration with clients and the senior developer to improve responsiveness and overall user experience.",
+        "Managed the CI/CD pipeline using Azure DevOps, improving maintainability by integrating unit tests with Jest and optimizing build processes with Webpack",
+        "Worked alongside a senior developer to mentor interns, fostering their professional development through hands-on project involvement and constructive feedback.",
+        "Contributed to system architecture, API development, and code reviews within an Agile environment across both front-end and back-end stacks.",
       ],
       skills: ["React", "TypeScript", "Tailwind CSS", "ASP.NET", "C#"],
     },
@@ -92,14 +92,15 @@ const currentProjects: ProjectCardProps[] = [
   {
     title: "Wani Tracker",
     description:
-      "A web app to help track Japanese learning progress using WaniKani's API.",
-    tags: ["react", "tailwind"],
+      "A website to help track Japanese learning progress using WaniKani's API.",
+    tags: ["React", "Tailwind CSS"],
+    imgSrc: test,
     githubUrl: "https://github.com/TDotH/wani-tracker",
   },
   {
     title: "Abacus",
-    description: "A budgeting app to help track expenses and income, and more.",
-    tags: ["react", "tailwind"],
+    description: "A budgeting app to help track expenses, income, and more.",
+    tags: ["React", "Tailwind CSS"],
   },
 ];
 

@@ -33,7 +33,7 @@ export interface WorkExperienceSection {
   skillsData?: WorkExperienceSkillData[];
 }
 
-type allowedTags = "react" | "tailwind";
+type allowedTags = "React" | "Tailwind CSS";
 
 export interface Project {
   imgSrc?: string;

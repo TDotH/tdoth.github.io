@@ -20,30 +20,17 @@ function ProjectCard({
   tags,
   className,
 }: ProjectCardProps) {
-  const TagBadges = useMemo(() => {
-    return tags?.map((tag, idx) => {
-      switch (tag) {
-        case "react":
-          return <ReactBadge key={idx} />;
-        case "tailwind":
-          return <TailwindBadge key={idx} />;
-        default:
-          return <Badge key={idx}>{tag}</Badge>;
-      }
-    });
-  }, [tags]);
-
   return (
     <div
       className={
-        "transition-transform duration-200 ease-in-out hover:scale-120 relative z-0 group hover:z-2 " +
+        "transition-transform bg-foreground text-background rounded-lg duration-200 ease-in-out hover:scale-120 relative z-0 group hover:z-2 " +
         className
       }
     >
       <div
         className={
-          "h-[300px] flex flex-col border-1 border-primary-50/20 rounded-lg bg-cover bg-center drop-shadow-sm hover:drop-shadow-lg " +
-          (imgSrc ? "bg-[url('" + imgSrc + "')] " : "bg-white/20")
+          "h-[300px] flex flex-col rounded-lg bg-cover bg-center drop-shadow-sm hover:drop-shadow-lg " +
+          (imgSrc ? `bg-[url("${imgSrc}")] ` : "")
         }
       >
         <div className="w-full mb-4 rounded-lg">
@@ -51,7 +38,7 @@ function ProjectCard({
             <div className="flex flex-1">
               {githubUrl && (
                 <Link
-                  className="text-white/40 hover:text-white/60 active:text-white/50 flex items-center"
+                  className="hover:text-background/80 active:text-background/60 flex items-center"
                   url={githubUrl}
                 >
                   <FontAwesomeIcon
@@ -64,7 +51,7 @@ function ProjectCard({
             </div>
             {websiteUrl && (
               <Link
-                className="text-white/40 hover:text-white/60 active:text-white/50 flex items-center"
+                className="hover:text-background/80 active:text-background/60 flex items-center"
                 url={websiteUrl}
               >
                 <FontAwesomeIcon size="xl" icon={faArrowUpRightFromSquare} />
@@ -72,17 +59,17 @@ function ProjectCard({
             )}
           </div>
         </div>
-        <div className="h-[100%] bg-gradient-to-b to-slate-300 via-slate-200/80 flex flex-col gap-2 p-4 text-slate-900 rounded-lg">
-          <div className="w-full text-white flex justify-center items-center text-2xl border-b-2 border-slate-300 pb-2">
-            <h4>{title}</h4>
+        <div className="h-[100%] rounded-lg">
+          <div className="w-full flex justify-center items-center text-2xl border-b-2 border-background pb-2">
+            <h4 className="font-bold text-xl">{title}</h4>
           </div>
-          <div className="flex flex-1 text-lg text-slate-800">
-            {description}
-          </div>
-          <div className="flex flex-wrap gap-2 justify-center items-center">
-            {TagBadges?.map((tag) => {
-              return tag;
-            })}
+          <div className="p-4 flex flex-col gap-4 h-[calc(100%-64px)]">
+            <div className="flex flex-1 text-lg">{description}</div>
+            <div className="flex flex-wrap gap-2 justify-center items-center">
+              {tags?.map((tag, idx) => {
+                return <Badge key={idx}>{tag}</Badge>;
+              })}
+            </div>
           </div>
         </div>
       </div>

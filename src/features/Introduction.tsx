@@ -17,7 +17,7 @@ function Introduction({
       ref={ref}
       id={sectionName}
       className={
-        "flex flex-1 justify-center items-center pb-[30%] sm:pb-[10%] lg:pb-[10%] xl:pb-[0%]" +
+        "flex flex-1 justify-center items-center pb-[30%] sm:pb-[10%] xl:pb-[5%]" +
         (className ? " " + className : "")
       }
     >
