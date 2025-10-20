@@ -15,11 +15,12 @@ import {
 } from "./config";
 import { useIsMobile } from "./utils/useIsMobile";
 import type { IntersectionObserverOptions } from "./features/types";
-import Skills from "./features/Skills";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+//import Skills from "./features/Skills";
 
 const SectionNames = {
   AboutMe: "About",
-  Skills: "Skills",
   WorkExperience: "Experience",
   Projects: "Projects",
   Introduction: "Introduction",
@@ -41,11 +42,9 @@ const intersectionObserverOptions: IntersectionObserverOptions = {
 function App() {
   const isMobile = useIsMobile();
   const [currentSection, setCurrentSection] = useState<string>("");
-  const [isScrollPressed, setIsScrollPressed] = useState<boolean>(false);
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
   const sectionRef = useRef<Record<string, HTMLElement | null>>({
     [SectionNames.AboutMe]: null,
-    [SectionNames.Skills]: null,
     [SectionNames.WorkExperience]: null,
     [SectionNames.Projects]: null,
     [SectionNames.Introduction]: null,
@@ -54,18 +53,20 @@ function App() {
     Record<string, IntersectionObserver | null>
   >({
     [SectionNames.AboutMe]: null,
-    [SectionNames.Skills]: null,
     [SectionNames.WorkExperience]: null,
     [SectionNames.Projects]: null,
     [SectionNames.Introduction]: null,
   });
+
+  const toTopClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     Object.keys(sectionObserverRefs.current).forEach((key) => {
       sectionObserverRefs.current[key] = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log(`Entering ${entry.target.id} section`);
             setCurrentSection(entry.target.id);
             if (entry.target.id === SectionNames.Introduction) {
               setShowNavbar(false);
@@ -97,7 +98,7 @@ function App() {
     >
       <header
         className={
-          "w-full bg-[url(./assets/ocean2.gif)]/40 sticky top-0 transition-translation duration-300 z-10 h-10 md:h-16 justify-between flex items-center gap-4 backdrop-blur-md " +
+          "w-full sticky bg-background/20 top-0 transition-translation duration-300 z-10 h-10 md:h-16 justify-between flex items-center gap-4 backdrop-blur-md " +
           (showNavbar ? " " : " -translate-y-20")
         }
       >
@@ -125,14 +126,14 @@ function App() {
           photos={aboutMe.photos}
           className="py-24"
         />
-        <Skills
+        {/* <Skills
           sectionName="Skills"
           ref={(el) => {
             sectionRef.current["Skills"] = el;
           }}
           skillsData={[]}
           className="py-24"
-        />
+        /> */}
         <WorkExperience
           sectionName="Experience"
           ref={(el) => {
@@ -148,10 +149,23 @@ function App() {
           }}
           currentProjects={currentProjects}
           pastProjects={pastProjects}
-          className="min-h-[85vh] py-24"
+          className="min-h-[80vh] py-24"
         />
       </main>
-      <Footer />
+      <button
+        onClick={toTopClick}
+        className={
+          "transition-translation duration-600 fixed cursor-pointer bottom-17 right-[5%] border-2 border-foreground bg-background/20 hover:bg-foreground/20 active:bg-foreground/10 backdrop-blur-md rounded-lg p-1 text-foreground " +
+          (showNavbar ? "" : "translate-x-60")
+        }
+      >
+        <FontAwesomeIcon
+          className="transition-colors"
+          size="lg"
+          icon={faAngleUp}
+        />
+      </button>
+      <Footer show={showNavbar} />
     </div>
   );
 }

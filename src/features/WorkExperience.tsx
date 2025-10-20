@@ -44,7 +44,6 @@ function WorkExperience({
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           toggleCard();
-          console.log("Work experience section in view, toggling cards.");
         }
       });
     }, intersectionObserverOptions);

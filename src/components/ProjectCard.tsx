@@ -38,7 +38,7 @@ function ProjectCard({
             <div className="flex flex-1">
               {githubUrl && (
                 <Link
-                  className="hover:text-background/80 active:text-background/60 flex items-center"
+                  className=" hover:bg-background/20 active:bg-background/10 flex items-center"
                   url={githubUrl}
                 >
                   <FontAwesomeIcon

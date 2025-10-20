@@ -11,8 +11,7 @@ function Link({ className, children, url }: LinkProps) {
       target="_blank"
       rel="noreferrer"
       className={
-        "p-1 cursor-pointer hover:bg-zinc-700/50 active:bg-zinc-800/80 text-white rounded-md transition-colors " +
-        (className ?? "")
+        "p-1 cursor-pointer rounded-md transition-colors " + (className ?? "")
       }
     >
       {children}

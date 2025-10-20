@@ -1,3 +1,9 @@
+import {
+  faGithubSquare,
+  faSquareLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "../components/ui/link";
 import type { SectionProps } from "./types";
 
 interface IntroductionProps extends SectionProps {
@@ -54,7 +60,28 @@ function Introduction({
               )}
             </ul>
           </nav>
-          <div></div>
+          <div className="w-full mt-3 border-t-2 border-foreground pt-3 flex justify-center">
+            <Link
+              className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
+              url={"https://github.com/TDotH"}
+            >
+              <FontAwesomeIcon
+                className="transition-colors"
+                size="2x"
+                icon={faGithubSquare}
+              />
+            </Link>
+            <Link
+              className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
+              url={"https://www.linkedin.com/in/tyde-hashimoto-665456156/"}
+            >
+              <FontAwesomeIcon
+                className="transition-colors"
+                size="2x"
+                icon={faSquareLinkedin}
+              />
+            </Link>
+          </div>
         </article>
       </div>
     </section>
