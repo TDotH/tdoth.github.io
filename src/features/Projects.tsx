@@ -31,9 +31,9 @@ function Projects({
         (className ? className : "")
       }
     >
-      <div className="text-4xl mb-6">
-        <h2>Projects</h2>
-      </div>
+      <h2 className="text-6xl max-w-7xl mx-auto font-bold text-primary lg:mb-4 px-4 md:px-6">
+        Projects
+      </h2>
       <div className="w-full max-w-6xl flex flex-col ">
         <div className="p-2 mb-4">
           <div className="mb-8 text-2xl justify-center flex lg:justify-start">

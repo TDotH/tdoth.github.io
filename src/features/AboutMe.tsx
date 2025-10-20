@@ -34,7 +34,7 @@ function AboutMe({
       </div>
       <div className="max-w-7xl mx-auto flex flex-row items-center px-4 gap-12">
         <div className="lg:p-6">
-          <p className="text-lg md:text-2xl text-foreground">
+          <p className="text-lg md:text-2xl text-foreground leading-snug md:leading-relaxed">
             {aboutMeText ?? "Add Stuff Here"}
           </p>
         </div>

@@ -79,24 +79,8 @@ const workExperiences: WorkExperienceSection[] = [
         "Implement responsive design to ensure compatibility across various devices and screen sizes.",
         "Participate in code reviews and contribute to team knowledge sharing.",
       ],
+      skills: ["React", "TypeScript", "Tailwind CSS", "ASP.NET", "C#"],
     },
-    skillsData: [
-      {
-        name: "React",
-        value: 60,
-        color: "#61DAFB",
-      },
-      {
-        name: "Typescript",
-        value: 30,
-        color: "#007ACC",
-      },
-      {
-        name: "C#",
-        value: 10,
-        color: "#68217A",
-      },
-    ],
   },
 ];
 

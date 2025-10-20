@@ -21,35 +21,35 @@ function VerticalConnector({
   return (
     <div
       className={
-        "w-[200px] text-lg flex-col overflow-y-hidden hidden sm:flex " +
+        "w-[200px]font-medium text-lg md:text-xl flex-col overflow-y-hidden hidden sm:flex " +
         (className ?? "")
       }
     >
       <div className="flex flex-col flex-grow justify-between items-center">
-        <div
+        <p
           className={
-            "z-2 bg-slate-900 p-2 rounded-full border-1 border-slate-800 transition-opacity duration-400 opacity-0 " +
+            "z-2 transition-opacity bg-foreground text-background duration-400 opacity-0 " +
             (show ? " delay-750 opacity-100 " : "")
           }
         >
           {endText}
-        </div>
+        </p>
         <div
           className={
-            "w-[3px] transition-all bg-slate-800 ease-in-out flex-grow-1 " +
+            "w-[2px] z-0 rounded-lg mix-blend-exclusion transition-all bg-background ease-in-out flex-grow-1  " +
             (show
               ? "  duration-1900 delay-950 opacity-100 "
               : " -translate-y-[125%] opacity-0 ")
           }
         ></div>
-        <div
+        <p
           className={
-            "z-2 bg-slate-900 p-2 rounded-full border-1 border-slate-800 transition-opacity duration-400 opacity-0 " +
+            "z-2 bg-background p-2 transition-opacity duration-400 opacity-0 " +
             (show ? " delay-2900 opacity-100 " : "")
           }
         >
           {startText}
-        </div>
+        </p>
       </div>
     </div>
   );

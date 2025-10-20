@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
 import Button from "../components/ui/button";
-import SkillsPieChart from "../components/SkillsPieChart";
 import type {
   IntersectionObserverOptions,
   SectionProps,
@@ -17,7 +16,7 @@ interface WorkExperienceProps extends SectionProps {
 const intersectionObserverOptions: IntersectionObserverOptions = {
   root: null,
   rootMargin: "0% 0% -25% 0%",
-  threshold: 0.75,
+  threshold: 0.85,
 };
 
 function WorkExperience({
@@ -45,6 +44,7 @@ function WorkExperience({
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           toggleCard();
+          console.log("Work experience section in view, toggling cards.");
         }
       });
     }, intersectionObserverOptions);
@@ -60,42 +60,25 @@ function WorkExperience({
       ref={ref}
       id={sectionName}
       className={
-        "flex flex-1 flex-col items-center overflow-x-hidden text-primary-50" +
+        "flex flex-1 flex-col items-center overflow-x-hidden " +
         (className ? " " + className : "")
       }
     >
-      <div
-        //ref={(el) => (workExperienceRefs.current[0] = el)}
-        className="text-4xl mb-6"
-      >
-        <h2>Work Experience</h2>
+      <div className="w-full before:absolute before:w-full before:h-[75%] before:md:h-[45%] before:mx-none before:bg-foreground">
+        <h2 className="relative z-1 text-6xl max-w-7xl mx-auto font-bold text-background lg:mb-4 p-4 md:p-6 ">
+          Experience
+        </h2>
       </div>
-      <Button onClick={toggleCard} className="mb-4">
+      {/* <Button onClick={toggleCard} className="mb-4 z-1">
         {showCard ? "Hide Details" : "Show Details"}
-      </Button>
+      </Button> */}
       {workExperiences?.map((section, index) => (
         <div
-          // @ts-ignore -- ref forwarding issue
-          ref={(el: HTMLDivElement | null) =>
-            (workExperienceRefs.current[index] = el)
-          }
           key={index}
-          className="flex w-full p-2 space-y-16 sm:p-0 lg:ml-[40%]"
+          className="w-full p-4 md:p-0"
+          // @ts-ignore -- ref forwarding issue
+          ref={(el) => (workExperienceRefs.current[index] = el)}
         >
-          <div
-            className={
-              "transition-opacity duration-500 hidden lg:block opacity-0 " +
-              (showCard ? "delay-800 opacity-100" : "")
-            }
-          >
-            <h3 className="flex justify-center text-xl font-semibold mb-3">
-              Core Technologies Used (by time spent):
-            </h3>
-            <SkillsPieChart
-              data={section.skillsData}
-              showChartAnimation={showChartAnimation}
-            />
-          </div>
           <WorkCard
             company={section.workExperience.company}
             position={section.workExperience.position}
@@ -103,8 +86,9 @@ function WorkExperience({
             endDate={section.workExperience.endDate}
             responsibilities={section.workExperience.responsibilities}
             logoSrc={section.workExperience.logoSrc}
+            skills={section.workExperience.skills}
             show={showCard}
-            className="w-full"
+            className=""
           />
         </div>
       ))}

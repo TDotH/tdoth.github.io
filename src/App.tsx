@@ -97,7 +97,7 @@ function App() {
     >
       <header
         className={
-          "w-full sticky top-0 transition-translation duration-300 z-10 h-16 justify-between flex items-center gap-4 g-primary-400/30 backdrop-blur-md " +
+          "w-full sticky top-0 transition-translation duration-300 z-10 h-10 md:h-16 justify-between flex items-center gap-4 backdrop-blur-md " +
           (showNavbar ? " " : " -translate-y-20")
         }
       >
@@ -106,7 +106,7 @@ function App() {
         </p>
         <Navbar items={sectionNamesArray} currentSection={currentSection} />
       </header>
-      <main>
+      <main className="overflow-x-hidden">
         <Introduction
           sectionName="Introduction"
           ref={(el) => {
@@ -123,7 +123,7 @@ function App() {
           }}
           aboutMeText={aboutMe.aboutMeText}
           photos={aboutMe.photos}
-          className="min-h-[120vh] my-24"
+          className="my-24"
         />
         <Skills
           sectionName="Skills"
@@ -139,7 +139,7 @@ function App() {
             sectionRef.current["Experience"] = el;
           }}
           workExperiences={workExperiences}
-          className={"min-h-[120vh] py-24"}
+          className={"py-24"}
         />
         <Projects
           sectionName="Projects"

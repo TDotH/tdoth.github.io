@@ -19,6 +19,7 @@ export interface WorkExperience {
   endDate?: string;
   responsibilities: string[];
   logoSrc?: string;
+  skills?: string[];
 }
 
 export interface WorkExperienceSkillData {
@@ -29,7 +30,7 @@ export interface WorkExperienceSkillData {
 
 export interface WorkExperienceSection {
   workExperience: WorkExperience;
-  skillsData: WorkExperienceSkillData[];
+  skillsData?: WorkExperienceSkillData[];
 }
 
 type allowedTags = "react" | "tailwind";

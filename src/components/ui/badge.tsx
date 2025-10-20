@@ -10,8 +10,8 @@ function Badge({ children, icon, className }: BadgeProps) {
   return (
     <span
       className={
-        "flex px-2 py-1 text-base font-semibold rounded-full text-white items-center " +
-        (className ?? " bg-gray-500")
+        "flex px-2 py-1 font-semibold rounded-lg items-center " +
+        (className ?? " bg-background text-foreground")
       }
       role="badge"
       aria-label="badge"

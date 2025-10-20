@@ -6,7 +6,7 @@ function Footer({ className }: FooterProps) {
   return (
     <footer
       className={
-        "w-full p-4 bg-primary-400 text-center text-sm text-primary-50 " +
+        "w-full p-4 bg-[url('/src/assets/ocean2.gif')] opacity-80 text-center text-sm text-background backdrop-blur-md " +
         (className ?? "")
       }
     >
