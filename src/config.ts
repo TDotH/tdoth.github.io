@@ -7,7 +7,6 @@ import about3 from "./assets/aboutMe/about3.jpg";
 import about4 from "./assets/aboutMe/about4.jpg";
 import about5 from "./assets/aboutMe/about5.jpg";
 import about6 from "./assets/aboutMe/about6.jpg";
-import test from "./assets/aboutMe/test1.jpg";
 //#region Introduction
 
 const introductionDescriptions: string[] = [
@@ -94,7 +93,6 @@ const currentProjects: ProjectCardProps[] = [
     description:
       "A website to help track Japanese learning progress using WaniKani's API.",
     tags: ["React", "Tailwind CSS"],
-    imgSrc: test,
     githubUrl: "https://github.com/TDotH/wani-tracker",
   },
   {

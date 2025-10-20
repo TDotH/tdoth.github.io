@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "../components/ui/link";
+import { useIsMobile } from "../utils/useIsMobile";
 
 interface FooterProps {
   className?: string;
@@ -11,6 +12,7 @@ interface FooterProps {
 }
 
 function Footer({ className, show }: FooterProps) {
+  const isMobile = useIsMobile();
   return (
     <footer
       className={
@@ -18,7 +20,7 @@ function Footer({ className, show }: FooterProps) {
         (show ? " " : " translate-y-20")
       }
     >
-      <div className="flex gap-2 ml-[10%]">
+      <div className="flex gap-2 ml-[5%] sm:ml-[10%]">
         <Link
           className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
           url={"https://github.com/TDotH"}
@@ -40,8 +42,11 @@ function Footer({ className, show }: FooterProps) {
           />
         </Link>
       </div>
-      <div className="mr-[10%]">
-        <p>© 2025 Tyde Hashimoto. All rights reserved.</p>
+      <div className="mr-[5%] sm:mr-[10%]">
+        <p className="text-sm sm:text-base">
+          © 2025 Tyde{" "}
+          {isMobile ? "Hashimoto" : "Hashimoto. All rights reserved."}
+        </p>
       </div>
     </footer>
   );

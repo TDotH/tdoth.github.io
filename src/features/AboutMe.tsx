@@ -20,7 +20,7 @@ function AboutMe({
       id={sectionName}
       className={"w-full mx-auto  " + (className ?? "")}
     >
-      <h2 className="text-6xl w-7xl mx-auto font-bold text-primary lg:mb-4 px-4 md:px-6">
+      <h2 className="text-6xl max-w-7xl mx-auto font-bold text-primary lg:mb-4 px-4 md:px-6">
         About Me
       </h2>
       <div className="overflow-x-hidden flex-nowrap flex gap-2 ">

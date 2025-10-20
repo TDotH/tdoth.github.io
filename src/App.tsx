@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import Navbar, { type NavItemProps } from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Introduction from "./features/Introduction";
 import WorkExperience from "./features/WorkExperience";
 import Projects from "./features/Projects";
@@ -107,7 +107,7 @@ function App() {
         </p>
         <Navbar items={sectionNamesArray} currentSection={currentSection} />
       </header>
-      <main className="overflow-x-hidden">
+      <main>
         <Introduction
           sectionName="Introduction"
           ref={(el) => {
@@ -149,13 +149,13 @@ function App() {
           }}
           currentProjects={currentProjects}
           pastProjects={pastProjects}
-          className="min-h-[80vh] py-24"
+          className="sm:min-h-[80vh] py-24"
         />
       </main>
       <button
         onClick={toTopClick}
         className={
-          "transition-translation duration-600 fixed cursor-pointer bottom-17 right-[5%] border-2 border-foreground bg-background/20 hover:bg-foreground/20 active:bg-foreground/10 backdrop-blur-md rounded-lg p-1 text-foreground " +
+          "transition-translation w-12 duration-600 sticky z-12 cursor-pointer bottom-17 left-[80%] md:left-[90%] border-2 border-foreground bg-background/20 hover:bg-foreground/20 active:bg-foreground/10 backdrop-blur-md rounded-lg p-1 text-foreground " +
           (showNavbar ? "" : "translate-x-60")
         }
       >

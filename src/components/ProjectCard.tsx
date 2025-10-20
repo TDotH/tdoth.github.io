@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-import { ReactBadge, TailwindBadge } from "./badges/badges";
 import Badge from "./ui/badge";
 import Link from "./ui/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
-import Button from "../components/ui/button";
 import type {
   IntersectionObserverOptions,
   SectionProps,
@@ -26,17 +25,12 @@ function WorkExperience({
   ref,
 }: WorkExperienceProps) {
   const [showCard, setShowCard] = useState(false);
-  const [showChartAnimation, setShowChartAnimation] = useState(false);
+  //const [showChartAnimation, setShowChartAnimation] = useState(false);
   const workExperienceRefs = useRef<(HTMLElement | null)[]>([]);
   const workExperienceObserverRef = useRef<IntersectionObserver | null>(null);
 
   const toggleCard = () => {
     setShowCard(!showCard);
-
-    // Trigger chart animation only when showing the card, delay slightly for better effect
-    setTimeout(() => {
-      setShowChartAnimation(!showCard);
-    }, 800);
   };
 
   useEffect(() => {
