@@ -1,13 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #141414;
+  color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,41 +15,33 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* variables */
-  --color-red: rgb(255,0,0);
-
+  --background: #ffffff;
+  --foreground: #081e2e;
+  --primary: #081e2e;
+  --text-primary: #001b48;
+  --text-secondary: #dde8f0;
+  --image-background: url("/src/assets/Ocean2.gif");
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.light {
+  --color-background: #ffffff;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --image-background: var(--image-background);
+  --animate-slide: slide 50s linear infinite;
 }
 
 @media (prefers-color-scheme: light) {
@@ -65,12 +57,6 @@ button:focus-visible {
   }
 }
 
-.glitter-container {
-  position: relative; /* Essential for positioning pseudo-elements */
-  background-color: #1a1a1a; /* Base background color */
-  overflow: hidden; /* Hide overflowing glitter particles */
-}
-
 .space {
   background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
   bottom: 0;
@@ -80,33 +66,52 @@ button:focus-visible {
   top: 0;
 }
 
-.glitter-container::before,
-.glitter-container::after {
-  content: '';
+.particle::before,
+.particle::after {
+  content: "";
   position: absolute;
-  background: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+  background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent 70%
+    ),
     radial-gradient(rgb(255, 255, 255) 1px, transparent 1px); /* Create a radial glow */
   border-radius: 50%; /* Make them circular */
   opacity: 0;
-  animation: glitter-movement 2s infinite alternate, /* Animate the glitter */
-    rainbow 2.5s linear infinite /* Give the glitter color */; 
+  animation: glitter-movement 2s infinite alternate,
+    /* Animate the glitter */ rainbow 2.5s linear infinite
+      /* Give the glitter color */;
 }
 
-.glitter-container::before {
-  width: 20px;
-  height: 20px;
-  top: 10%;
-  left: 20%;
-  animation-delay: 0s; /* Stagger animation start times */
+.particle-container {
+  z-index: 2;
+  position: absolute;
+  width: 100vh;
+  height: 100vh;
 }
 
-.glitter-container::after {
+.particle {
+  position: absolute; /* Essential for positioning pseudo-elements */
+  background-color: #1a1a1a; /* Base background color */
+  overflow: hidden; /* Hide overflowing glitter particles */
+}
+
+.particle::after {
+  width: 100vw;
+  height: 100vh;
   width: 15px;
   height: 15px;
   top: 70%;
   left: 80%;
   animation-delay: 1.5s;
+}
+
+.particle::before {
+  width: 20px;
+  height: 20px;
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s; /* Stagger animation start times */
 }
 
 @keyframes glitter-movement {
@@ -125,40 +130,41 @@ button:focus-visible {
 }
 
 @keyframes rainbow {
-		100%,0%{
-			background-color: rgb(255,0,0);
-		}
-		8%{
-			background-color: rgb(255,127,0);
-		}
-		16%{
-			background-color: rgb(255,255,0);
-		}
-		25%{
-			background-color: rgb(127,255,0);
-		}
-		33%{
-			background-color: rgb(0,255,0);
-		}
-		41%{
-			background-color: rgb(0,255,127);
-		}
-		50%{
-			background-color: rgb(0,255,255);
-		}
-		58%{
-			background-color: rgb(0,127,255);
-		}
-		66%{
-			background-color: rgb(0,0,255);
-		}
-		75%{
-			background-color: rgb(127,0,255);
-		}
-		83%{
-			background-color: rgb(255,0,255);
-		}
-		91%{
-			background-color: rgb(255,0,127);
-		}
+  100%,
+  0% {
+    background-color: rgb(255, 0, 0);
+  }
+  8% {
+    background-color: rgb(255, 127, 0);
+  }
+  16% {
+    background-color: rgb(255, 255, 0);
+  }
+  25% {
+    background-color: rgb(127, 255, 0);
+  }
+  33% {
+    background-color: rgb(0, 255, 0);
+  }
+  41% {
+    background-color: rgb(0, 255, 127);
+  }
+  50% {
+    background-color: rgb(0, 255, 255);
+  }
+  58% {
+    background-color: rgb(0, 127, 255);
+  }
+  66% {
+    background-color: rgb(0, 0, 255);
+  }
+  75% {
+    background-color: rgb(127, 0, 255);
+  }
+  83% {
+    background-color: rgb(255, 0, 255);
+  }
+  91% {
+    background-color: rgb(255, 0, 127);
+  }
 }
