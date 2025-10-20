@@ -18,9 +18,9 @@ import type { IntersectionObserverOptions } from "./features/types";
 import Skills from "./features/Skills";
 
 const SectionNames = {
-  AboutMe: "About Me",
+  AboutMe: "About",
   Skills: "Skills",
-  WorkExperience: "Work Experience",
+  WorkExperience: "Experience",
   Projects: "Projects",
   Introduction: "Introduction",
 };
@@ -116,13 +116,10 @@ function App() {
   return (
     <div
       className={
-        "w-full min-h-[100dvh] transition-colors duration-550 text-foreground flex flex-col cursor-default select-none" +
-        (sectionColors[currentSection]
-          ? " " + sectionColors[currentSection]
-          : " bg-background ")
+        "w-full min-h-[100dvh] bg-background text-foreground flex flex-col cursor-default select-none"
       }
     >
-      <header className="w-full sticky top-0 z-10 h-16 justify-center md:justify-end flex items-center gap-4 text-primary-50">
+      <header className="w-full sticky top-0 z-10 h-16 justify-center md:justify-end flex items-center gap-4 text-primary-50 hidden">
         <Navbar items={items} currentSection={currentSection} />
       </header>
       <main>
@@ -132,12 +129,18 @@ function App() {
             sectionRef.current["Introduction"] = el;
           }}
           descriptions={introductionDescriptions}
-          className="h-[120vh] py-16"
+          className="h-[100vh]"
+          sections={[
+            SectionNames.AboutMe,
+            SectionNames.Skills,
+            SectionNames.WorkExperience,
+            SectionNames.Projects,
+          ]}
         />
         <AboutMe
-          sectionName="About Me"
+          sectionName="About"
           ref={(el) => {
-            sectionRef.current["About Me"] = el;
+            sectionRef.current["About"] = el;
           }}
           aboutMeText={aboutMe.aboutMeText}
           photos={aboutMe.photos}
@@ -152,9 +155,9 @@ function App() {
           className="min-h-[120vh] py-24"
         />
         <WorkExperience
-          sectionName="Work Experience"
+          sectionName="Experience"
           ref={(el) => {
-            sectionRef.current["Work Experience"] = el;
+            sectionRef.current["Experience"] = el;
           }}
           workExperiences={workExperiences}
           className={"min-h-[120vh] py-24"}

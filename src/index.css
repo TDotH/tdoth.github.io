@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,24 +15,12 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* variables */
-  --color-red: rgb(255, 0, 0);
-  --background: #dde8f0;
-  --foreground: #001b48;
-  --primary-400: #001b48;
-  --primary-300: #004581;
-  --primary-200: #018abd;
-  --primary-100: #97cbdc;
-  --primary-50: #dde8f0;
-  --secondary: #ff6584;
+  --background: #ffffff;
+  --foreground: #081e2e;
+  --primary: #081e2e;
   --text-primary: #001b48;
   --text-secondary: #dde8f0;
-  --bg-primary-50: #dde8f0;
-  --bg-primary-100: #97cbdc;
-  --bg-primary-200: #018abd;
-  --bg-primary-300: #004581;
-  --bg-primary-400: #001b48;
-  --bg-primary: black;
-  --bg-secondary: #e1e8ed;
+  --image-background: url("/src/assets/Ocean2.gif");
 }
 
 .light {
@@ -50,21 +39,9 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-secondary: var(--secondary);
-  --text-primary: var(--text-primary);
-  --text-secondary: var(--text-secondary);
-  --bg-secondary: var(--bg-secondary);
-  --color-primary-50: var(--primary-50);
-  --color-primary-100: var(--primary-100);
-  --color-primary-200: var(--primary-200);
-  --color-primary-300: var(--primary-300);
-  --color-primary-400: var(--primary-400);
+  --color-primary: var(--primary);
+  --image-background: var(--image-background);
   --animate-slide: slide 50s linear infinite;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 @media (prefers-color-scheme: light) {
