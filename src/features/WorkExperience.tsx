@@ -5,6 +5,7 @@ import type {
   SectionProps,
   WorkExperienceSection,
 } from "./types";
+import { useIsMobile } from "../utils/useIsMobile";
 
 interface WorkExperienceProps extends SectionProps {
   workExperiences?: WorkExperienceSection[];
@@ -24,6 +25,7 @@ function WorkExperience({
   className,
   ref,
 }: WorkExperienceProps) {
+  const isMobile = useIsMobile();
   const [showCard, setShowCard] = useState(false);
   //const [showChartAnimation, setShowChartAnimation] = useState(false);
   const workExperienceRefs = useRef<(HTMLElement | null)[]>([]);
@@ -80,7 +82,7 @@ function WorkExperience({
             responsibilities={section.workExperience.responsibilities}
             logoSrc={section.workExperience.logoSrc}
             skills={section.workExperience.skills}
-            show={showCard}
+            show={showCard || isMobile}
             className=""
           />
         </div>

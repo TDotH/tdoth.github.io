@@ -7,8 +7,7 @@ export interface NavItemProps {
 
 interface NavbarProps {
   items: string[];
-  currentSection: string;
-  activeSection?: string;
+  currentSection?: string;
 }
 
 function Navbar({ items, currentSection }: NavbarProps) {

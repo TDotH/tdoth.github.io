@@ -63,7 +63,7 @@ function Projects({
             )}
           </div>
         </article>
-        <div className="h-1 my-4 w-full bg-radial from-slate-300/30 from-15% via-transparent" />
+        {/* <div className="h-1 my-4 w-full bg-radial from-slate-300/30 from-15% via-transparent" /> */}
         {pastProjects?.length !== 0 && (
           <article>
             <div className="mb-8 text-2xl justify-center flex lg:justify-start">

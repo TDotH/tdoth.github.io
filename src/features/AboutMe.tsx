@@ -1,5 +1,6 @@
 import type { photoProps } from "../components/photo/photo";
 import PhotoSlide from "../components/photo/photoSlide";
+import { useIsMobile } from "../utils/useIsMobile";
 import type { SectionProps } from "./types";
 
 interface AboutMeProps extends SectionProps {
@@ -14,6 +15,7 @@ function AboutMe({
   aboutMeText,
   photos,
 }: AboutMeProps) {
+  const isMobile = useIsMobile();
   return (
     <section
       ref={ref}
