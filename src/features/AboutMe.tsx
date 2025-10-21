@@ -15,7 +15,6 @@ function AboutMe({
   aboutMeText,
   photos,
 }: AboutMeProps) {
-  const isMobile = useIsMobile();
   return (
     <section
       ref={ref}
