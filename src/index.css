@@ -23,6 +23,22 @@
   --image-background: url("/src/assets/Ocean2.gif");
 }
 
+svg#masked-text {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+svg#masked-text rect {
+  fill: white;
+}
+
+svg#masked-text > rect {
+  -webkit-mask: url(#mask);
+  mask: url(#mask);
+}
+
 .light {
   --color-background: #ffffff;
 }

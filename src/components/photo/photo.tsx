@@ -14,9 +14,9 @@ function Photo({ src, title }: photoProps) {
       />
 
       <div className="sm:h-[25%] min-h-[100px] z-1 rounded-b-md absolute bottom-0 w-full text-background flex flex-col justify-end px-6 md:px-2">
-        <h4 className="font-extrabold text-3xl sm:text-3xl md:text-6xl mb-4 text-shadow-lg">
+        <p className="font-extrabold text-3xl sm:text-3xl md:text-6xl mb-4 text-shadow-lg">
           {title}
-        </h4>
+        </p>
       </div>
     </article>
   );

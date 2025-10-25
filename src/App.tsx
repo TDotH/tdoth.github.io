@@ -163,6 +163,7 @@ function App() {
       {!isMobile && (
         <button
           onClick={toTopClick}
+          aria-label="Scroll to Top"
           className={
             "transition-translation w-12 duration-600 sticky z-12 cursor-pointer bottom-17 left-[80%] md:left-[90%] border-2 border-foreground bg-background/20 hover:bg-foreground/20 active:bg-foreground/10 backdrop-blur-md rounded-lg p-1 text-foreground " +
             (showNavbar ? "" : "translate-x-60")

@@ -22,6 +22,7 @@ function Footer({ show }: FooterProps) {
     >
       <div className="flex gap-2 ml-[5%] sm:ml-[10%]">
         <Link
+          ariaLabel="Tyde Hashimoto's GitHub Profile"
           className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
           url={"https://github.com/TDotH"}
         >
@@ -32,6 +33,7 @@ function Footer({ show }: FooterProps) {
           />
         </Link>
         <Link
+          ariaLabel="Tyde Hashimoto's LinkedIn Profile"
           className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
           url={"https://www.linkedin.com/in/tyde-hashimoto-665456156/"}
         >

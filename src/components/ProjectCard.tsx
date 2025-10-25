@@ -36,6 +36,7 @@ function ProjectCard({
             <div className="flex flex-1">
               {githubUrl && (
                 <Link
+                  ariaLabel={`${title} Repository for more information`}
                   className=" hover:bg-background/20 active:bg-background/10 flex items-center"
                   url={githubUrl}
                 >
@@ -49,6 +50,7 @@ function ProjectCard({
             </div>
             {websiteUrl && (
               <Link
+                ariaLabel={`Visit ${title} Website`}
                 className="hover:text-background/80 active:text-background/60 flex items-center"
                 url={websiteUrl}
               >
