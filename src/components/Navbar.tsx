@@ -26,7 +26,9 @@ function Navbar({ items, currentSection }: NavbarProps) {
               }`}
               key={idx}
             >
-              <a href={`#${item}`}>{item}</a>
+              <a aria-label={`Scroll to ${item}`} href={`#${item}`}>
+                {item}
+              </a>
             </li>
           );
         })}

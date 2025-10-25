@@ -13,7 +13,6 @@ function Badge({ children, icon, className }: BadgeProps) {
         "flex px-2 py-1 font-semibold rounded-lg items-center " +
         (className ?? " bg-background text-foreground")
       }
-      role="badge"
       aria-label="badge"
       title="badge"
     >

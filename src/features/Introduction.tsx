@@ -27,15 +27,15 @@ function Introduction({
       }
     >
       <div className="flex flex-col lg:flex-row gap-8 h-max items-stretch p-4 2xl:p-0">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col h-fit justify-center bg-cover md:bg-auto bg-[url('/src/assets/Ocean2-optimize-40.gif')] bg-clip-text">
           <h1
             className={
-              " font-black text-6xl lg:text-9xl bg-[url('/src/assets/Ocean2.gif')] bg-clip-text text-transparent"
+              "leading-[1.1] font-black text-6xl lg:text-9xl text-transparent "
             }
           >
             Tyde Hashimoto
           </h1>
-          <h2 className="text-end pr-2 font-bold text-3xl lg:text-6xl bg-[url('/src/assets/Ocean2.gif')] bg-clip-text text-transparent">
+          <h2 className="text-end pr-2 font-bold text-3xl lg:text-6xl text-transparent">
             Full Stack Developer
           </h2>
         </div>
@@ -48,6 +48,7 @@ function Introduction({
                   {sections.map((section) => (
                     <li key={section}>
                       <a
+                        aria-label={`Scroll to ${section}`}
                         className="after:block after:origin-left after:scale-x-0 after:border-b-2 after:transition-all after:duration-350 after:ease-in-out hover:after:scale-x-100 hover:after:bg-foreground"
                         href={`#${section}`}
                       >
@@ -61,6 +62,7 @@ function Introduction({
           </nav>
           <div className="w-full mt-3 border-t-2 border-foreground pt-3 flex justify-center">
             <Link
+              ariaLabel="Tyde Hashimoto's GitHub Profile"
               className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
               url={"https://github.com/TDotH"}
             >
@@ -71,6 +73,7 @@ function Introduction({
               />
             </Link>
             <Link
+              ariaLabel="Tyde Hashimoto's LinkedIn Profile"
               className="text-foreground hover:bg-foreground/20 active:bg-foreground/10 flex items-center"
               url={"https://www.linkedin.com/in/tyde-hashimoto-665456156/"}
             >
